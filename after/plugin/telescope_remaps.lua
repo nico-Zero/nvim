@@ -8,3 +8,21 @@ vim.keymap.set('n', '<leader>fk', builtin.keymaps, {})
 vim.keymap.set('n', "<leader>fd", builtin.lsp_definitions, {})
 vim.keymap.set('n', "<leader>fq", builtin.quickfix, {})
 
+require("telescope").setup({
+    defaults = {
+        vimgrep_arguments = {
+            "rg",
+            "--no-heading",
+            "--with-filename",
+            "--line-number",
+            "--column",
+            "--smart-case",
+            "--no-ignore",
+        },
+    },
+    pickers = {
+        find_files = {
+            find_command = { "rg", "--files", "--no-ignore", "--hidden", "--follow" },
+        },
+    },
+})
