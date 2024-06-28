@@ -134,5 +134,9 @@ require("lazy").setup({
             "MunifTanjim/nui.nvim"
         },
         opts = { lsp = { auto_attach = true } }
-    }
+    },
+
+    -- 26.Nvim-Cursorline
+    "yamatsum/nvim-cursorline",
+
 })

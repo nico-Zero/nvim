@@ -518,6 +518,13 @@ Really easily.
 
 For detailed Docs - [NavBuddy](https://github.com/SmiteshP/nvim-navbuddy)
 
+#### 26. Nvim-Cursorline
+This plugin just adds underline to the matching words can be configured from its configuration file.
+
+For detailed Docs - [Nvim-Cursorline](https://github.com/yamatsum/nvim-cursorline)
+
+---
+
 ***This is it,
 Everything will run just fine after this.***
 
