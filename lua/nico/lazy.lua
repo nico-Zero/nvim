@@ -16,7 +16,8 @@ require("lazy").setup({
     {
         'nvim-telescope/telescope.nvim', version = '0.1.8',
         -- or                            , branch = '3.1.x',
-        dependencies = { 'nvim-lua/plenary.nvim' }
+        dependencies = { 'nvim-lua/plenary.nvim' },
+        event = "VeryLazy",
     },
 
     -- 2.Treesitter
@@ -24,6 +25,8 @@ require("lazy").setup({
         'nvim-treesitter/nvim-treesitter',
         "tree-sitter-regex",
         build = ":TSUpdate",
+        event = "VeryLazy",
+
     },
 
     -- 3.Nvim-Tree
@@ -33,6 +36,7 @@ require("lazy").setup({
     -- 4.Tokyo-Night-Theam
     {
         "folke/tokyonight.nvim",
+        event = "VeryLazy",
     },
 
     -- 5.Auto-Close
@@ -41,7 +45,8 @@ require("lazy").setup({
     -- 6.LuaLine
     {
         'nvim-lualine/lualine.nvim',
-        requires = { 'nvim-tree/nvim-web-devicons', opt = true }
+        requires = { 'nvim-tree/nvim-web-devicons', opt = true },
+        event = "VeryLazy",
     },
 
     -- 7.Indent-Blankline
@@ -65,7 +70,7 @@ require("lazy").setup({
         "williamboman/mason-lspconfig.nvim",
         lazy ={
             auto_install = true,
-        }
+        },
     },
     "neovim/nvim-lspconfig",
 
@@ -76,9 +81,16 @@ require("lazy").setup({
     'hrsh7th/cmp-cmdline',
     'hrsh7th/nvim-cmp',
 
-    -- 14.Vsnip
-    'hrsh7th/cmp-vsnip',
-    'hrsh7th/vim-vsnip',
+    -- 14.LuaSnip
+        {
+        "L3MON4D3/LuaSnip",
+        -- follow latest release.
+        version = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
+        -- install jsregexp (optional!).
+        build = "make install_jsregexp",
+        event = "VeryLazy",
+    },
+
 
     -- 15.Harpoon
     "ThePrimeagen/harpoon",
@@ -86,6 +98,7 @@ require("lazy").setup({
     -- 16.Comment
     {
         'numToStr/Comment.nvim',
+        event = "VeryLazy",
     },
 
     -- 17.Scroll-bar
@@ -102,18 +115,21 @@ require("lazy").setup({
         "folke/trouble.nvim",
         opts = {}, -- for default options, refer to the configuration section for custom setup.
         cmd = "Trouble",
+        event = "VeryLazy",
     },
     -- 21.Multi-Line-Courser
     {
         "brenton-leighton/multiple-cursors.nvim",
         version = "*",  -- Use the latest tagged version
         opts = {},
+        event = "VeryLazy",
     },
 
     -- 22.Nvim-Conda
     {
         "kmontocam/nvim-conda",
         dependencies = { "nvim-lua/plenary.nvim" },
+        event = "VeryLazy",
     },
 
     -- 23.HexEditor
@@ -125,6 +141,7 @@ require("lazy").setup({
         cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
         ft = { "markdown" },
         build = function() vim.fn["mkdp#util#install"]() end,
+        event = "VeryLazy",
     },
 
     -- 25.NavBuddy
@@ -134,7 +151,8 @@ require("lazy").setup({
             "SmiteshP/nvim-navic",
             "MunifTanjim/nui.nvim"
         },
-        opts = { lsp = { auto_attach = true } }
+        opts = { lsp = { auto_attach = true } },
+        event = "VeryLazy",
     },
 
     -- 26.Nvim-Cursorline
@@ -151,7 +169,7 @@ require("lazy").setup({
             --   `nvim-notify` is only needed, if you want to use the notification view.
             --   If not available, we use `mini` as the fallback
             "rcarriga/nvim-notify",
-        }
+        },
     },
 
     -- 28.LuaRocks
