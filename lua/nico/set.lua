@@ -43,3 +43,4 @@ vim.lsp.diagnostic.on_publish_diagnostics, {
 -- vim.opt.spell = true
 
 vim.g.mkdp_auto_close = 0
+vim.opt.showmode = false

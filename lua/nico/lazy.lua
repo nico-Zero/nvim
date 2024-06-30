@@ -22,6 +22,7 @@ require("lazy").setup({
     -- 2.Treesitter
     {
         'nvim-treesitter/nvim-treesitter',
+        "tree-sitter-regex",
         build = ":TSUpdate",
     },
 
@@ -140,13 +141,9 @@ require("lazy").setup({
     "yamatsum/nvim-cursorline",
 
     -- 27.Noice
-    -- lazy.nvim
     {
         "folke/noice.nvim",
         event = "VeryLazy",
-        opts = {
-            -- add any options here
-        },
         dependencies = {
             -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
             "MunifTanjim/nui.nvim",
@@ -156,5 +153,8 @@ require("lazy").setup({
             "rcarriga/nvim-notify",
         }
     },
+
+    -- 28.LuaRocks
+    "vhyrro/luarocks.nvim",
 
 })

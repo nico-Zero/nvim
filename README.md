@@ -523,8 +523,13 @@ This plugin just adds underline to the matching words can be configured from its
 
 For detailed Docs - [Nvim-Cursorline](https://github.com/yamatsum/nvim-cursorline)
 
----
+#### 27. Noice
+This plugin makes UI look better.
 
+#### 28. LuaRocks
+This plugin is a Dependence for Treesitter.
+
+___
 ***This is it,
 Everything will run just fine after this.***
 

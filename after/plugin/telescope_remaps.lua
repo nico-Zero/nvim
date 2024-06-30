@@ -1,12 +1,12 @@
 local builtin = require('telescope.builtin')
-vim.keymap.set('n', '<leader>pf', builtin.find_files, {})
-vim.keymap.set('n', '<leader>pg', builtin.live_grep, {})
-vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
-vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
-vim.keymap.set('n', '<leader>fc', builtin.commands, {})
-vim.keymap.set('n', '<leader>fk', builtin.keymaps, {})
-vim.keymap.set('n', "<leader>fd", builtin.lsp_definitions, {})
-vim.keymap.set('n', "<leader>fq", builtin.quickfix, {})
+vim.keymap.set('n', '<leader>pf', builtin.find_files, { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>pg', builtin.live_grep, { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>fb', builtin.buffers, { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>fh', builtin.help_tags, { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>fc', builtin.commands, { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>fk', builtin.keymaps, { noremap = true, silent = true })
+vim.keymap.set('n', "<leader>fd", builtin.lsp_definitions, { noremap = true, silent = true })
+vim.keymap.set('n', "<leader>fq", builtin.quickfix, { noremap = true, silent = true })
 
 require("telescope").setup({
     defaults = {
