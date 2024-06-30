@@ -1,2 +1,2 @@
-require("nico")
-require("nico.lazy")
+require("config")
+require("config.lazy")

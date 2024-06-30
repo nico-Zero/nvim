@@ -66,10 +66,37 @@ cmp.setup({
     }),
     sources = cmp.config.sources({
         { name = 'nvim_lsp' },
-        { name = 'luasnip' },
+        { name = 'luasnip', option = { show_autosnippets = true }},
         { name = 'buffer' },
         { name = 'path' },
-    })
+    }),
+    sorting = {
+        priority_weight = 2,
+        comparators = {
+            function(entry1, entry2)
+                local kind1 = entry1:get_kind()
+                local kind2 = entry2:get_kind()
+                if kind1 == kind2 then
+                    return nil
+                end
+                if kind1 == cmp.lsp.CompletionItemKind.Snippet then
+                    return true
+                end
+                if kind2 == cmp.lsp.CompletionItemKind.Snippet then
+                    return false
+                end
+                return nil
+            end,
+            cmp.config.compare.offset,
+            cmp.config.compare.exact,
+            cmp.config.compare.score,
+            cmp.config.compare.recently_used,
+            cmp.config.compare.kind,
+            cmp.config.compare.sort_text,
+            cmp.config.compare.length,
+            cmp.config.compare.order,
+        },
+    },
 })
 
 -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
@@ -91,4 +118,3 @@ cmp.setup.cmdline(':', {
     }),
     matching = { disallow_symbol_nonprefix_matching = false }
 })
-
