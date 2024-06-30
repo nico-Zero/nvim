@@ -38,9 +38,15 @@ vim.lsp.diagnostic.on_publish_diagnostics, {
 }
 )
 
--- vim.opt.cursorline = true
+vim.opt.cursorline = true
+vim.opt.cursorlineopt = "number"
+-- vim.api.nvim_set_hl(0, 'LineNrAbove', { fg='black' })
+-- vim.api.nvim_set_hl(0, 'LineNr', { fg='yellow' })
+-- vim.api.nvim_set_hl(0, 'LineNrBelow', { fg='black' })
+
 -- vim.opt.spelllang = 'en_us'
 -- vim.opt.spell = true
 
 vim.g.mkdp_auto_close = 0
 vim.opt.showmode = false
+

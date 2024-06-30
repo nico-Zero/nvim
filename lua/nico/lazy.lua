@@ -157,4 +157,9 @@ require("lazy").setup({
     -- 28.LuaRocks
     "vhyrro/luarocks.nvim",
 
+    -- 29.Nvim-Treesitter-Context
+    "nvim-treesitter/nvim-treesitter-context",
+
+    -- 30.Nvim-Colorizer
+    'norcalli/nvim-colorizer.lua',
 })
