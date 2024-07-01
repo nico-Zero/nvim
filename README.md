@@ -24,7 +24,7 @@ This is my Neovim config, and it is focused on python development env.
 
 ![trouble](img/Trouble-window.png)
 
-# You should install prerequisite
+# Install prerequisite first.
 #### 1. Python
 ##### [Download and install from Python Site](https://www.python.org/downloads/).
 
@@ -94,61 +94,65 @@ This is the File Structure of the config :
 .
 ├── after
 │   └── plugin
-│       ├── auto_close_setup_and_remaps.lua
-│       ├── code_runner_and_remaps.lua
 │       ├── colors.lua
+│       └── remaps.lua
+├── lua
+│   ├── config
+│   │   ├── autocommands.lua
+│   │   ├── keymaps.lua
+│   │   ├── lazy.lua
+│   │   └── options.lua
+│   └── plugins
+│       ├── code_runner.lua
 │       ├── comment.lua
+│       ├── drassing.lua
 │       ├── gitsigns.lua
 │       ├── harpoon.lua
-│       ├── hex.lua
-│       ├── ibl.lua
-│       ├── lsp_config.lua
+│       ├── hexeditor.lua
+│       ├── indent_blankline.lua
+│       ├── lazydev.lua
+│       ├── lsp.lua
 │       ├── lualine.lua
+│       ├── luarocks.lua
+│       ├── luasnip.lua
+│       ├── markdownpreview.lua
+│       ├── mini_pair.lua
 │       ├── multi_line_courser.lua
+│       ├── noice.lua
+│       ├── nvim_colorizer.lua
+│       ├── nvim_conda.lua
+│       ├── nvim_cursorline.lua
 │       ├── nvim_tree.lua
-│       ├── nvim-ts-autotag.lua
-│       ├── scrollbar.lua
-│       ├── telescope_remaps.lua
+│       ├── nvim_treesitter_context.lua
+│       ├── nvim_ts_autotag.lua
+│       ├── scroll_bar.lua
+│       ├── surround.lua
+│       ├── telescope.lua
+│       ├── theams.lua
 │       ├── toggleterm.lua
-│       ├── tokyo_theme.lua
 │       ├── treesitter.lua
 │       └── trouble.lua
-├── cht.sh
-├── init.lua
-├── lazy-lock.json
-├── lua
-│   └── nico
-│       ├── init.lua
-│       ├── lazy.lua
-│       ├── remap.lua
-│       └── set.lua
 └── README.md
+
 ```
-The File Structure is as per neovim's guide line.
-The code flow of the config is like this:-
+The File Structure is as per lazy.nvim's guide line.
+The startup flow of the config is like this:-
 
 ```bash
-1. nvim will check the init.lua file in ~/.config/nvim.
-2. There is require("nico"), it is going to /lua/nico.
-3. It will run the /lua/nico/init.lua file next.
-4. From that file it will run set.lua, remap.lua and lazy.lua.
-5. After executing everything it will run all the file inside the 'after' dir.
-6. This is the code flow of my nvim config.
+1. From the .config/nvim/init.lua file 4 things will be imported.
+2. First ../lua/config/options.lua, All the Option config are in this file.
+3. Second ../lua/config/lazy.lua, I am using Lazy as my plugin manager.
+   - Then the Lazy imports all plugins from ../lua/plugins/ this dir to install and mantain.
+   - Lazy will Automatically detects the changes in ../lua/config/ and ../lua/plugins/ dirs and
+     live reloads the nvim with the new changes.
+
+4. Third ../lua/config/keymaps.lua, I keep my nvim keymaps or remaps in this file [Note:- Not Plugins keymaps]
+5. Fourth ../lua/config/autocommands.lua, I keep all autocommands in this file.
+6. In dir ../.config/nvim/after/ ,Every file will be loded after the all other things are loded.
 ```
 Now, What things are in what file (Basic):-
 
-#### 1. set.lua
-```bash
-# Do all your setup config in this file.
-# Like
-vim.opt.tabstop = 4
-vim.opt.softtabstop = 4
-vim.opt.shiftwidth = 4
-vim.opt.expandtab = true
-
-```
-
-#### 2. Some Shortcuts for starters
+#### 1. Some Shortcuts for starters
 ```bash
 # , reprasents sequance and - reprasents together.
 1. Space,p,v    -> Open File Explorer
@@ -165,7 +169,18 @@ vim.opt.expandtab = true
 ```
 There are more remaps in [remap.lua](https://github.com/nico-Zero/nvim/blob/main/lua/nico/remap.lua).
 
-#### 3. remap.lua
+#### 2. options.lua
+```bash
+# Do all your setup config in this file.
+# Like
+vim.opt.tabstop = 4
+vim.opt.softtabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.expandtab = true
+
+```
+
+#### 3. keymaps.lua
 ```bash
 # Write all your remap config in this file.
 # Like:-
@@ -188,22 +203,23 @@ require("lazy").setup({
 ```
 For detailed Explanation go to [Lazy.nvim](https://github.com/folke/lazy.nvim).
 
-#### 5. after/plugin
+#### 5. after/plugin/
+In this, i have all the things, i want to Setup after the setup of whole nvim.
+
+#### 6. lua/plugins/
+This dir have all the plugins install and config setups.
+
+A list of all the installed config:-
+
 ```bash
-If a plugin requires to call setup function then make a file with name 
-of that plugin and write the setup function in that file call ':so' or 
-restart the nvim after that.
-
-Or Write any custom config for any plugin in this dir.
-
-And read the docs of installed plugins from there repos, the lazy.lua install config is the path of installed plugin repo.
-And This is the list of installed plugins...
-
-1.Teleschope
+1.Telescope
 2.Treesitter
 3.Nvim-Tree
 4.Tokyo-Night-Theam
-5.Auto-Close
+5.Mini.nvim 
+    -   [Note: Mini.nvim is install but only using mini.pair right now.
+        List of all Mini.[x] -> https://github.com/echasnovski/mini.nvim
+
 6.LuaLine
 7.Indent-Blankline
 8.ToggleTerm
@@ -212,7 +228,7 @@ And This is the list of installed plugins...
 11.GitSigns
 12.Mason
 13.Nvim-Cmp
-14.Vsnip
+14.LuaSnip
 15.Harpoon
 16.Comment
 17.Scroll-bar
@@ -224,11 +240,15 @@ And This is the list of installed plugins...
 23.HexEditor
 24.MarkDownPreview
 25.NavBuddy
+26.Nvim-Cursorline
+27.Noice
+28.LuaRocks
+29.Nvim-Treesitter-Context
+30.Nvim-Colorizer
 
 ```
 # Plugin Info
 #### 1.Teleschope
-
 It is a Fuzzy Finder tool for Vim/Neovim.
 ```bash
 # This are my Teleschope Shortcuts in my config.
@@ -248,12 +268,12 @@ For detailed Docs - [Teleschope](https://github.com/nvim-telescope/telescope.nvi
 
 #### 2. Treesitter
 This is nvim-treesitter the nvim version of [tree-sitter](https://github.com/tree-sitter/tree-sitter)
-It also provides us a rich highlighting in neovim.
+It provides a rich highlighting in neovim.
 
 For detailed Docs - [Nvim-Treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
 
 #### 3. Nvim-Tree
-This plugin provides the File-Explorer .
+It is a File-Explorer.
 
 For detailed Docs - [Nvim-Tree](https://github.com/nvim-tree/nvim-tree.lua)
 
@@ -262,8 +282,8 @@ It is Tokyo-Night-Theam.
 
 For detailed Docs - [Tokyo-Night-Theam](https://github.com/folke/tokyonight.nvim)
 
-#### 5. Auto-Close
-This plugin provides us the functionality Auto-Close tags, symbols, etc.
+#### 5. Mini.Pair
+Functionality of Auto-Close tags, symbols, etc.
 ```bash
 # You have to configer the Auto-Close plugin your self.
 # In this nvim config i have wrote some config for Auto-Close.
@@ -278,24 +298,24 @@ This plugin provides us the functionality Auto-Close tags, symbols, etc.
 # You can configer more as per your liking.
 ```
 
-For detailed Docs - [Auto-Close](https://github.com/m4xshen/autoclose.nvim)
+For detailed Docs - [Mini.Pair](https://github.com/echasnovski/mini.pairs)
 
 #### 6. LuaLine
-This plugin provides with a simple tag at the bottom of vim/nvim which provides us information
-about git branch, nvim modes, updates and deletion after last git commit, file name, system type,
-formate type, file type , courser position, etc.
+Simple tag-linec at the bottom of vim/nvim where we can put information about current file and other stuffs like:
+About git branch, nvim modes, updates and deletion after last git commit, file name, system type,
+format type, file type, courser position, etc.
 
 It is also configurable as per our liking.
 
 For detailed Docs - [LuaLine](https://github.com/nvim-lualine/lualine.nvim)
 
 #### 7. Indent-Blankline
-This plugin provides indentation guides in nvim.
+Gives Indentation guides in nvim.
 
 For detailed Docs - [Indent-Blankline](https://github.com/lukas-reineke/indent-blankline.nvim)
 
 #### 8. ToggleTerm
-This plugin provides us a nicer terminal ui.
+A Nicer terminal then default one with better UI and it can be toggled, And is configurable as per liking.
 
 ```bash
 # This are my ToggleTerm Shortcuts in my config.
@@ -307,9 +327,7 @@ This plugin provides us a nicer terminal ui.
 For detailed Docs - [ToggleTerm](https://github.com/akinsho/toggleterm.nvim)
 
 #### 9. Code-Runner
-This plugin provides the code-running functionality in vim/nvim.
-What is just do is takes is run code from its config and pastes it in terminal.
-We can config every single file type code-run command in its config.
+Code-running functionality in vim/nvim like is in VS-code.
 
 And it is also integrateable with toggleterm and etc.
 
@@ -329,20 +347,17 @@ And it is also integrateable with toggleterm and etc.
 For detailed Docs - [Code-Runner](https://github.com/CRAG666/code_runner.nvim)
 
 #### 10. Drassing 
-
-This plugin provides us really beautiful UI for Insertion for commands.
+Better and more beautiful UI for Insertion of commands.
 
 For detailed Docs - [Drassing](https://github.com/stevearc/dressing.nvim)
 
 #### 11. GitSigns
-
-This plugin provides us Git blame functionality inside vim/nvim.
+Git blame functionality inside vim/nvim.
 
 For detailed Docs - [GitSigns](https://github.com/lewis6991/gitsigns.nvim)
 
 #### 12. Mason
-
-This plugin manages all the LSP, DAP, Linter, Formatter. Install, Update, Uninstall, etc.
+Plugin manager for LSP, DAP, Linter, Formatter.
 
 ```bash
 # This are my Mason Shortcuts in my config.
@@ -354,8 +369,7 @@ This plugin manages all the LSP, DAP, Linter, Formatter. Install, Update, Uninst
 For detailed Docs - [Mason](https://github.com/williamboman/mason.nvim)
 
 #### 13. Nvim-Cmp
-
-This is the plugin which provides us the functionality of auto-completion in our vim/nvim.
+Functionality of auto-completion in vim/nvim.
 
 ```bash
 # This are my Nvim-Cmp shortcuts in my config.
@@ -372,13 +386,24 @@ This is the plugin which provides us the functionality of auto-completion in our
 
 For detailed Docs - [Nvim-Cmp](https://github.com/hrsh7th/nvim-cmp)
 
-#### 14. Vsnip
-This plugin is the VScode(LSP) for vim/nvim.
+#### 14. LuaSnip
+Functionality of creating your own snippts.
+Some of them are:
 
-For detailed Docs - [Vsnip](https://github.com/hrsh7th/vim-vsnip)
+1. Text-Transformations using Lua functions
+2. Conditional Expansion
+3. Defining nested Snippets
+4. Filetype-specific Snippets
+5. Choices
+6. Dynamic Snippet creation
+7. Regex-Trigger
+8. Autotriggered Snippets
+9. Easy Postfix Snippets
+
+For detailed Docs - [LuaSnip](https://github.com/L3MON4D3/LuaSnip)
 
 #### 15. Harpoon
-This plugin save a file destination and in need we can quickly switch between that file at 
+Save a file destination and in need, We can quickly switch between that file at 
 any instance of vim/nvim.
 
 ```bash
@@ -395,8 +420,7 @@ Note:- To delete the added file from the harpoon list.
 For detailed Docs - [Harpoon](https://github.com/ThePrimeagen/harpoon)
 
 #### 16. Comment
-
-This plugin provides the functionality of commenting the code with a short-cut.
+Functionality of commenting the code with a short-cut.
 ```bash
 # This are my Comment shortcuts in my config.
 # , reprasents sequance and - reprasents together.
@@ -410,30 +434,27 @@ This plugin provides the functionality of commenting the code with a short-cut.
 7.  g,c,A         n         ->  Adds Comment to end of the line (Comment)
 ```
 
-It is also combinable with vim/nvim notions.
-
 For detailed Docs - [Comment](https://github.com/numToStr/Comment.nvim)
 
 #### 17. Scroll-bar
-This plugin provides us a scrollbar functionality in vim/nvim which also 
-tells us about errors and git blames.
+Scrollbar functionality in vim/nvim which also shows errors and git blames.
 
 For detailed Docs - [Scroll-Bar](https://github.com/petertriho/nvim-scrollbar)
 
 #### 18. Surround
-This a really powerful plugin which provides us the power of adding symbols
-around texts.
+Really powerful plugin with which, Can put any symbol or html-tag around words, sentences, or lines etc.
 
-There is too much going on this plugin in, so go and read Docs [Surround](https://github.com/kylechui/nvim-surround)
+There is too much going on this plugin in, so go and read Docs - [Surround](https://github.com/kylechui/nvim-surround)
 
 #### 19. Nvim-ts-AutoTag
-This plugin provides us functionality of autoclose and autoedit html tags.
+Functionality of autoclose and autoedit html tags.
 
 For detailed Docs - [Nvim-ts-AutoTag](https://github.com/windwp/nvim-ts-autotag)
 
 #### 20. Trouble
-This plugin provides the functionality of a error/warning window.
+Functionality of a window which have the list of all the errors/warnings in the current file.
 It is highly configurable.
+
 ```bash
 # This are my Trouble shortcuts in my config.
 # , reprasents sequance and - reprasents together.
@@ -445,7 +466,7 @@ It is highly configurable.
 For detailed Docs - [Trouble](https://github.com/folke/trouble.nvim)
 
 #### 21. Multi-Line-Courser
-This plugin provides the functionality of multi line courser.
+Functionality of multi-line-courser.
 
 ```bash
 # This are my Multi-Line-Courser shortcuts in my config.
@@ -464,7 +485,7 @@ This plugin provides the functionality of multi line courser.
 For detailed Docs - [Multi-Line-Courser](https://github.com/brenton-leighton/multiple-cursors.nvim)
 
 #### 22. Nvim-Conda
-This plugin provides the functionality of conda activation from the vim/nvim --silent.
+Functionality of conda activation from the vim/nvim is done in --silent.
 
 ```bash
 # This are my Nvim-Conda shortcuts in my config.
@@ -476,8 +497,8 @@ This plugin provides the functionality of conda activation from the vim/nvim --s
 For detailed Docs - [Nvim-Conda](https://github.com/kmontocam/nvim-conda)
 
 #### 23. HexEditor
+Functionality of HexEditor in vim/nvim.
 
-This plugin provides the functionality of HexEditor in vim/nvim.
 ```bash
 # This are my HexEditor shortcuts in my config.
 # , reprasents sequance and - reprasents together.
@@ -489,10 +510,8 @@ Note:- Changes done in hex mode will reflect in normal mode.
 
 For detailed Docs - [HexEditor](https://github.com/RaafatTurki/hex.nvim)
 
-
 #### 24. MarkDownPreview
-
-This plugin provides the functionality of previewing it mrakdown in your browser.
+Functionality of previewing mrakdown in your browser.
 ```bash
 # This are my MarkDownPreview shortcuts in my config.
 # , reprasents sequance and - reprasents together.
@@ -500,15 +519,14 @@ This plugin provides the functionality of previewing it mrakdown in your browser
 1.  Leader,m,d,t        n       ->  Toggles between MrakDownPreview mode and normal mode (MarkDownPreview)
 
 ```
-When you move in your vim the MarkDownPreview in browser will move along too.
+When you move in your vim, The MarkDownPreview in browser will move along too.
 
 For detailed Docs - [MrakDownPreview](https://github.com/iamcco/markdown-preview.nvim)
 
 #### 25. NavBuddy
-This plugin provides the functionality of Nevigation between all variable, function, class,
-modules, etc.
+It opens a window the is like yazi terminal tool but it has destination of 
+function atart, class start etc instade of file.
 
-Really easily.
 ```bash
 # This are my NavBuddy shortcuts in my config.
 # , reprasents sequance and - reprasents together.
@@ -519,16 +537,29 @@ Really easily.
 For detailed Docs - [NavBuddy](https://github.com/SmiteshP/nvim-navbuddy)
 
 #### 26. Nvim-Cursorline
-This plugin just adds underline to the matching words can be configured from its configuration file.
+Adds underline on the matching words.
 
 For detailed Docs - [Nvim-Cursorline](https://github.com/yamatsum/nvim-cursorline)
 
 #### 27. Noice
-This plugin makes UI look better.
+Makes UI look better.
+
+For detailed Docs - [Noice](https://github.com/folke/noice.nvim)
 
 #### 28. LuaRocks
-This plugin is a Dependence for Treesitter.
+A provider of lazy.nvim.
 
+For detailed Docs - [LuaRocks](https://github.com/vhyrro/luarocks.nvim)
+
+#### 29. Nvim-Treesitter-Context
+Makes the context of a class, function, list, json, etc. Stick in the top.
+
+For detailed Docs - [Nvim-Treesitter-Context](https://github.com/nvim-treesitter/nvim-treesitter-context)
+
+#### 30. Nvim-Colorizer
+Show the actual color when writing any type of color code.
+
+For detailed Docs - [Nvim-Colorizer](https://github.com/NvChad/nvim-colorizer.lua)
 ___
 ***This is it,
 Everything will run just fine after this.***
