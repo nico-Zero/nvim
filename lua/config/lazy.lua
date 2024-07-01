@@ -12,173 +12,18 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-    -- 1.Teleschope
-    {
-        'nvim-telescope/telescope.nvim', version = '0.1.8',
-        -- or                            , branch = '3.1.x',
-        dependencies = { 'nvim-lua/plenary.nvim' },
-        event = "VeryLazy",
+    spec = {
+        -- import/override with your plugins
+        { import = "plugins" },
     },
-
-    -- 2.Treesitter
-    {
-        'nvim-treesitter/nvim-treesitter',
-        "tree-sitter-regex",
-        build = ":TSUpdate",
-        event = "VeryLazy",
-
+    defaults = {
+        -- By default, only LazyVim plugins will be lazy-loaded. Your custom plugins will load during startup.
+        -- If you know what you're doing, you can set this to `true` to have all your custom plugins lazy-loaded by default.
+        lazy = false,
+        -- It's recommended to leave version=false for now, since a lot the plugin that support versioning,
+        -- have outdated releases, which may break your Neovim install.
+        version = false, -- always use the latest git commit
     },
-
-    -- 3.Nvim-Tree
-    "nvim-tree/nvim-tree.lua",
-    "nvim-tree/nvim-web-devicons",
-
-    -- 4.Tokyo-Night-Theam
-    {
-        "folke/tokyonight.nvim",
-        event = "VeryLazy",
-    },
-
-    -- 5.Mini.Pair
-    { 'echasnovski/mini.nvim', version = '*' },
-
-    -- 6.LuaLine
-    {
-        'nvim-lualine/lualine.nvim',
-        requires = { 'nvim-tree/nvim-web-devicons', opt = true },
-        event = "VeryLazy",
-    },
-
-    -- 7.Indent-Blankline
-    "lukas-reineke/indent-blankline.nvim",
-
-    -- 8.ToggleTerm
-    "akinsho/toggleterm.nvim",
-
-    -- 9.Code-Runner
-    'CRAG666/code_runner.nvim',
-
-    -- 10.Drassing
-    "stevearc/dressing.nvim",
-
-    -- 11.GitSigns
-    "lewis6991/gitsigns.nvim",
-
-    -- 12.Mason
-    "williamboman/mason.nvim",
-    {
-        "williamboman/mason-lspconfig.nvim",
-        lazy ={
-            auto_install = true,
-        },
-    },
-    "neovim/nvim-lspconfig",
-
-    -- 13.Nvim-Cmp
-    'hrsh7th/cmp-nvim-lsp',
-    'hrsh7th/cmp-buffer',
-    'hrsh7th/cmp-path',
-    'hrsh7th/cmp-cmdline',
-    'hrsh7th/nvim-cmp',
-    'saadparwaiz1/cmp_luasnip',
-
-    -- 14.LuaSnip
-    {
-        "L3MON4D3/LuaSnip",
-        -- follow latest release.
-        version = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
-        -- install jsregexp (optional!).
-        build = "make install_jsregexp",
-        event = "VeryLazy",
-    },
-
-
-    -- 15.Harpoon
-    "ThePrimeagen/harpoon",
-
-    -- 16.Comment
-    {
-        'numToStr/Comment.nvim',
-        event = "VeryLazy",
-    },
-
-    -- 17.Scroll-bar
-    "petertriho/nvim-scrollbar",
-
-    -- 18.Surround
-    "tpope/vim-surround",
-
-    -- 19.Nvim-ts-AutoTag
-    "windwp/nvim-ts-autotag",
-
-    -- 20.Trouble
-    {
-        "folke/trouble.nvim",
-        opts = {}, -- for default options, refer to the configuration section for custom setup.
-        cmd = "Trouble",
-        event = "VeryLazy",
-    },
-    -- 21.Multi-Line-Courser
-    {
-        "brenton-leighton/multiple-cursors.nvim",
-        version = "*",  -- Use the latest tagged version
-        opts = {},
-        event = "VeryLazy",
-    },
-
-    -- 22.Nvim-Conda
-    {
-        "kmontocam/nvim-conda",
-        dependencies = { "nvim-lua/plenary.nvim" },
-        event = "VeryLazy",
-    },
-
-    -- 23.HexEditor
-    'RaafatTurki/hex.nvim',
-
-    -- 24.MarkDownPreview
-    {
-        "iamcco/markdown-preview.nvim",
-        cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
-        ft = { "markdown" },
-        build = function() vim.fn["mkdp#util#install"]() end,
-        event = "VeryLazy",
-    },
-
-    -- 25.NavBuddy
-    {
-        "SmiteshP/nvim-navbuddy",
-        dependencies = {
-            "SmiteshP/nvim-navic",
-            "MunifTanjim/nui.nvim"
-        },
-        opts = { lsp = { auto_attach = true } },
-        event = "VeryLazy",
-    },
-
-    -- 26.Nvim-Cursorline
-    "yamatsum/nvim-cursorline",
-
-    -- 27.Noice
-    {
-        "folke/noice.nvim",
-        event = "VeryLazy",
-        dependencies = {
-            -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
-            "MunifTanjim/nui.nvim",
-            -- OPTIONAL:
-            --   `nvim-notify` is only needed, if you want to use the notification view.
-            --   If not available, we use `mini` as the fallback
-            "rcarriga/nvim-notify",
-        },
-    },
-
-    -- 28.LuaRocks
-    "vhyrro/luarocks.nvim",
-
-    -- 29.Nvim-Treesitter-Context
-    "nvim-treesitter/nvim-treesitter-context",
-
-    -- 30.Nvim-Colorizer
-    'norcalli/nvim-colorizer.lua',
+    install = { colorscheme = { "tokyonight" } },
+    checker = { enabled = true }, -- automatically check for plugin updates
 })
