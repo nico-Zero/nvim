@@ -2,27 +2,27 @@ This is my Neovim config, and it is focused on python development env.
 
 #### 1. Start
 
-![start](img/start.png)
+![start](assets/img/start.png)
 
 #### 2. File-Explorer
 
-![file-explorer](img/File-explorer.png)
+![file-explorer](assets/img/File-explorer.png)
 
 #### 3. Fuzzy-Finder
 
-![fuzzy-finder](img/Fuzzy-Finder.png)
+![fuzzy-finder](assets/img/Fuzzy-Finder.png)
 
 #### 4. Fuzzy-Keymaps-Finder
 
-![fuzzy-keymap-finder](img/Fuzzy-keymap-finder.png)
+![fuzzy-keymap-finder](assets/img/Fuzzy-keymap-finder.png)
 
 #### 5. NavBuddy
 
-![nvabuddy](img/Navbuddy-window.png)
+![nvabuddy](assets/img/Navbuddy-window.png)
 
 #### 6. Trouble
 
-![trouble](img/Trouble-window.png)
+![trouble](assets/img/Trouble-window.png)
 
 # Install prerequisite first.
 #### 1. Python
