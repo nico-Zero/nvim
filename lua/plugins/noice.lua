@@ -7,6 +7,7 @@ return{
     },
     config = function ()
         require("noice").setup()
+
     end,
 
 }

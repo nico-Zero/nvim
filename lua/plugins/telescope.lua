@@ -1,7 +1,6 @@
 return {
     'nvim-telescope/telescope.nvim',
     version = '0.1.8',
-    dependencies = { 'nvim-lua/plenary.nvim' },
     event = "VeryLazy",
     config = function ()
         require("telescope").setup({
@@ -22,7 +21,5 @@ return {
                 },
             },
         })
-
     end,
-
 }
