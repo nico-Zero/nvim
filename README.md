@@ -560,6 +560,18 @@ For detailed Docs - [Nvim-Treesitter-Context](https://github.com/nvim-treesitter
 Show the actual color when writing any type of color code.
 
 For detailed Docs - [Nvim-Colorizer](https://github.com/NvChad/nvim-colorizer.lua)
+
+#### 31. DashBoard
+It Makes a Dashboard in the start of vim/nvim.
+
+For detailed Docs - [DashBoard](https://github.com/nvimdev/dashboard-nvim)
+
+
+#### 32. UndoTree
+It gives a Tree of our commits and we can select any of them and go back in time.
+
+For detailed Docs - [UndoTree](https://github.com/mbbill/undotree)
+
 ___
 ***This is it,
 Everything will run just fine after this.***

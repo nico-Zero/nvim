@@ -5,6 +5,10 @@ return{
             scope = {
                 show_start = false,
                 show_end = false,
+            },
+            exclude = {
+                buftypes = {"terminal", "toggleterm"},
+                filetypes = {"dashboard"}
             }
         })
 

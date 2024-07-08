@@ -92,4 +92,9 @@ vim.keymap.set( "n", "<leader>nd", "<cmd>Noice dismiss<CR>" ,{ noremap = true, s
 -- 28.LuaRocks
 -- 29.Nvim-Treesitter-Context
 -- 30.Nvim-Colorizer
+-- 31.Oil.Nvim
+local oil = require("oil")
+vim.keymap.set( "n", "-", oil.open_float, { desc = "Open parent directory", noremap = true, silent = true })
 
+-- 32.Undotree
+vim.keymap.set( "n", "<F5>", "<cmd>UndotreeToggle<CR>", { noremap = true, silent = true })
