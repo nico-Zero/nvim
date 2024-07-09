@@ -584,6 +584,11 @@ It is a vim/nvim plugin for genrating ascii art.
 
 For detailed Docs - [Ascii](https://github.com/MaximilianLloyd/ascii.nvim)
 
+#### 33.Nvim-cheat.sh
+Cheat.sh integration in nvim.
+
+For detailed Docs - [Nvim-Cheat.sh](https://github.com/RishabhRD/nvim-cheat.sh)
+
 ___
 ***This is it,
 Everything will run just fine after this.***

@@ -98,3 +98,6 @@ vim.keymap.set( "n", "-", oil.open_float, { desc = "Open parent directory", nore
 
 -- 32.Undotree
 vim.keymap.set( "n", "<F5>", "<cmd>UndotreeToggle<CR>", { noremap = true, silent = true })
+
+-- 33.Nvim-Cheat.sh
+vim.keymap.set( "n", "<leader>cl", "<cmd>CheatList<CR>", { noremap = true, silent = true })
