@@ -594,4 +594,3 @@ ___
 Everything will run just fine after this.***
 
 ***But If you want to go deep in Nvim config [Nvim Docs](https://neovim.io/doc/).***
-hello
