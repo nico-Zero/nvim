@@ -30,6 +30,9 @@ return{
                 "ruff",
                 "lua_ls",
                 "clangd",
+                "bashls",
+                "quick_lint_js",
+                "rust_analyzer",
             },
             handlers = {
                 function (server_name)
