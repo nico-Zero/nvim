@@ -9,6 +9,8 @@ vim.keymap.set('n', '<leader>fk', builtin.keymaps, { noremap = true, silent = tr
 vim.keymap.set('n', "<leader>fd", builtin.lsp_definitions, { noremap = true, silent = true })
 vim.keymap.set('n', "<leader>fq", builtin.quickfix, { noremap = true, silent = true })
 vim.keymap.set('n', "<leader>fgs", builtin.git_status, { noremap = true, silent = true })
+-- vim.keymap.set('n', "<A-j>", builtin.scroll{count = 1}, { noremap = true, silent = true })
+-- vim.keymap.set('n', "<A-k>", builtin.scroll{count = -1}, { noremap = true, silent = true })
 
 -- 2.Treesitter
 -- 3.Nvim-Tree
