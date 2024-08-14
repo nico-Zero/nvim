@@ -25,15 +25,6 @@ return{
     config = function()
         require("mason").setup()
         require("mason-lspconfig").setup({
-            ensure_installed = {
-                "pyright",
-                "ruff",
-                "lua_ls",
-                "clangd",
-                "bashls",
-                "quick_lint_js",
-                "rust_analyzer",
-            },
             handlers = {
                 function (server_name)
                     require("lspconfig")[server_name].setup {
@@ -55,6 +46,18 @@ return{
                     require("lspconfig").bashls.setup({
                         filetype = {"sh", "zsh" , "bash"}
                     })
+                end,
+                ["pyright"] = function ()
+                    require("lspconfig").pyright.setup {
+                        settings = {
+                            python = {
+                                analysis = {
+                                    diagnosticMode = "workspace",
+                                },
+                            },
+                        },
+                        filetype= {"python"},
+                    }
                 end
             },
         })
@@ -129,5 +132,4 @@ return{
             }),
         })
     end,
-
 }
