@@ -3,8 +3,6 @@ return{
     config = function ()
         require('mason-tool-installer').setup {
             ensure_installed = {
-                -- "ruff_lsp",
-                -- "pylsp",
                 'bash-language-server',
                 'vim-language-server',
                 "mypy",
@@ -14,6 +12,7 @@ return{
                 "clangd",
                 "quick_lint_js",
                 "rust_analyzer",
+                "autopep8",
             },
             auto_update = true,
             run_on_start = true,
