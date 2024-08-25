@@ -58,3 +58,4 @@ vim.opt.showmode = false
 
 vim.o.foldcolumn = '1' -- '0' is not bad
 
+vim.g.lazydev_enabled = true
