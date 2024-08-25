@@ -56,3 +56,5 @@ vim.opt.cursorlineopt = "number"
 vim.g.mkdp_auto_close = 0
 vim.opt.showmode = false
 
+vim.o.foldcolumn = '1' -- '0' is not bad
+
