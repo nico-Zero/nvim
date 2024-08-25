@@ -1,4 +1,4 @@
--- 1.Telescope
+-- 1.Telescoperemp
 local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<leader>pf', builtin.find_files, { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>pg', builtin.live_grep, { noremap = true, silent = true })
@@ -51,8 +51,9 @@ vim.keymap.set({"i", "s"}, "<C-E>", function()
 end, {silent = true})
 
 -- 15.Harpoon
-vim.keymap.set("n","<leader>a",":lua require('harpoon.mark').add_file()<CR>", { noremap = true, silent = true })
+vim.keymap.set("n","<C-a>",":lua require('harpoon.mark').add_file()<CR>", { noremap = true, silent = true })
 vim.keymap.set("n","<C-e>",":lua require('harpoon.ui').toggle_quick_menu()<CR>", { noremap = true, silent = true })
+vim.keymap.set("n","<C-t>",":Telescope harpoon marks<CR>", { noremap = true, silent = true })
 
 -- 16.Comment
 -- 17.Scroll-bar
