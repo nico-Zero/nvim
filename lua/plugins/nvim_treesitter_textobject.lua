@@ -42,8 +42,8 @@ return{
                         ["<leader>nf"] = "@function.outer",
                     },
                     swap_previous = {
-                        ["<leader>Na"] = "@parameter.inner",
-                        ["<leader>Nf"] = "@function.outer",
+                        ["<leader>nA"] = "@parameter.inner",
+                        ["<leader>nF"] = "@function.outer",
                     },
                 }
             },
