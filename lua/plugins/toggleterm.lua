@@ -10,6 +10,21 @@ return{
             on_create=function ()
                 vim.cmd("TermExec cmd='conda activate $CONDA_DEFAULT_ENV && clear'")
             end,
+            float_opts = {
+                border = 'curved',
+                width = function()
+                    return math.floor(vim.o.columns * 0.35)
+                end,
+                height = function()
+                    return vim.o.lines - 5
+                end,
+                winblend = 3,
+                -- Position the float on the right side
+                row = 1,
+                col = function()
+                    return math.floor(vim.o.columns * 0.65)
+                end,
+            }
         })
     end,
 }
