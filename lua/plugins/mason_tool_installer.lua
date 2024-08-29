@@ -14,7 +14,7 @@ return{
                 "rust_analyzer",
                 "autopep8",
             },
-            auto_update = true,
+            auto_update = false,
             run_on_start = true,
             integrations = {
             ['mason-lspconfig'] = true,

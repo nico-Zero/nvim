@@ -4,11 +4,11 @@ return{
         require("toggleterm").setup({
             size = 20,
             start_in_insert = true,
-            open_mapping = [[<A-\>]],
+            open_mapping = [[<A-,>]],
             direction = "float",
             autochdir=true,
             on_create=function ()
-                vim.cmd("TermExec cmd='conda activate $CONDA_DEFAULT_ENV && clear'")
+                vim.cmd("TermExec cmd='clear'")
             end,
             float_opts = {
                 border = 'curved',

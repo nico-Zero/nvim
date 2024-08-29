@@ -81,28 +81,25 @@ vim.keymap.set( {"n", "x"}, "<leader>cd", "<Cmd>MultipleCursorsAddJumpNextMatch<
 vim.keymap.set( {"n", "x"}, "<leader>cD", "<Cmd>MultipleCursorsJumpNextMatch<CR>", { noremap = true, silent = true })
 vim.keymap.set( {"n", "x"}, "<leader>cl", "<Cmd>MultipleCursorsLock<CR>", { noremap = true, silent = true })
 
--- 22.Nvim-Conda
-vim.keymap.set( "n", "<leader>ca", ":CondaActivate<CR>", { noremap = true, silent = true })
-
--- 23.HexEditor
+-- 22.HexEditor
 vim.keymap.set( "n", "<leader>ht", ":HexToggle<CR>", { noremap = true, silent = true })
 
--- 24.MarkDownPreview
+-- 23.MarkDownPreview
 vim.keymap.set( "n", "<leader>mdt", "<Plug>MarkdownPreviewToggle", { noremap = true, silent = true })
 
--- 25.NavBuddy
-vim.keymap.set( "n", "<leader>sf", "<cmd>Navbuddy<CR>", { noremap = true, silent = true })
+-- 24.NavBuddy
+vim.keymap.set( "n", "<leader>nf", "<cmd>Navbuddy<CR>", { noremap = true, silent = true })
 
--- 26.Nvim-Cursorline
--- 27.Noice
+-- 25.Nvim-Cursorline
+-- 26.Noice
 vim.keymap.set( "n", "<leader>nd", "<cmd>Noice dismiss<CR>" ,{ noremap = true, silent = true })
 
--- 28.LuaRocks
--- 29.Nvim-Treesitter-Context
--- 30.Nvim-Colorizer
--- 31.Oil.Nvim
+-- 27.LuaRocks
+-- 28.Nvim-Treesitter-Context
+-- 29.Nvim-Colorizer
+-- 30.Oil.Nvim
 local oil = require("oil")
 vim.keymap.set( "n", "-", oil.open_float, { desc = "Open parent directory", noremap = true, silent = true })
 
--- 32.Undotree
+-- 31.Undotree
 vim.keymap.set( "n", "<F5>", "<cmd>UndotreeToggle<CR>", { noremap = true, silent = true })
