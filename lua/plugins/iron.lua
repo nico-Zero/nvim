@@ -3,7 +3,7 @@ return{
     ft = {"python"},
     config = function ()
         local iron = require("iron.core")
-
+        local view = require("iron.view")
         iron.setup {
             config = {
                 visibility = require("iron.visibility").toggle,
@@ -12,39 +12,47 @@ return{
                     sh = {
                         command = {"zsh"}
                     },
-                    python = require("iron.fts.python").ipython,
+                    python = {
+                        command = {
+                            "ipython",
+                            "-i",
+                            "--pprint",
+                            "--no-autoindent",
+                            "--no-simple-prompt",
+                        }
+                    }
                 },
 
-                repl_open_cmd = require('iron.view').split.vertical.botright(80)
+                repl_open_cmd = view.split.vertical.botright(80)
+                -- repl_open_cmd = view.right(80)
             },
 
             keymaps = {
-                send_motion = "<space>sc",
-                visual_send = "<space>sc",
-                send_file = "<space>sf",
-                send_line = "<space>sl",
-                send_paragraph = "<space>sp",
-                send_until_cursor = "<space>su",
-                send_mark = "<space>sm",
+                send_motion = "<space>rc",
+                visual_send = "<space>rc",
+                send_file = "<space>rf",
+                send_line = "<space>rl",
+                send_paragraph = "<space>rp",
+                send_until_cursor = "<space>ru",
+                send_mark = "<space>rm",
                 mark_motion = "<space>mc",
                 mark_visual = "<space>mc",
                 remove_mark = "<space>md",
                 cr = "<space>s<cr>",
-                interrupt = "<space>s<space>",
-                exit = "<space>sq",
+                interrupt = "<space>r<space>",
+                exit = "<space>rq",
                 clear = "<space>cl",
             },
 
             highlight = {
                 italic = true
             },
-            ignore_blank_lines = true, -- ignore blank lines when sending visual select lines
         }
 
         -- iron also has a list of commands, see :h iron-commands for all available commands
-        vim.keymap.set('n', '<space>rf', '<cmd>IronRepl<cr>', { noremap = true, silent = true })
-        vim.keymap.set('n', '<space>rr', '<cmd>IronRestart<cr>', { noremap = true, silent = true })
-        vim.keymap.set('n', '<space>rs', '<cmd>IronFocus<cr>', { noremap = true, silent = true })
-        vim.keymap.set('n', '<space>rh', '<cmd>IronHide<cr>', { noremap = true, silent = true })
+        vim.keymap.set('n', '<space>sf', '<cmd>IronRepl<cr>', { noremap = true, silent = true })
+        vim.keymap.set('n', '<space>sr', '<cmd>IronRestart<cr>', { noremap = true, silent = true })
+        vim.keymap.set('n', '<space>ss', '<cmd>IronFocus<cr>', { noremap = true, silent = true })
+        vim.keymap.set('n', '<space>sh', '<cmd>IronHide<cr>', { noremap = true, silent = true })
     end
 }

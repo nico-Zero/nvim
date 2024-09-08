@@ -60,6 +60,8 @@ vim.keymap.set("n","<leader>jj",':lua require("harpoon.ui").nav_next()<CR>', { n
 vim.keymap.set("n","<leader>kk",':lua require("harpoon.ui").nav_prev()<CR>', { noremap = true, silent = true })
 
 -- 16.Comment
+vim.keymap.set( "n", "gcs", "vas<Plug>(comment_toggle_linewise_visual)", { noremap = true, silent = true })
+vim.keymap.set( "n", "gca", "<Plug>(comment_toggle_)", { noremap = true, silent = true })
 -- 17.Scroll-bar
 -- 18.Surround
 -- 19.Nvim-ts-AutoTag

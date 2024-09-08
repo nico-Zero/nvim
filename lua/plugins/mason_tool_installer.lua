@@ -5,7 +5,7 @@ return{
             ensure_installed = {
                 'bash-language-server',
                 'vim-language-server',
-                "mypy",
+                -- "mypy",
                 "black",
                 "lua_ls",
                 "pyright",
