@@ -28,8 +28,8 @@ return{
                         ["aa"] = "@assignment.outer",
                         ["ia"] = "@assignment.rhs",
 
-                        ["ap"] = "@parameter.outer",
-                        ["ip"] = "@parameter.inner",
+                        ["aP"] = "@parameter.outer",
+                        ["iP"] = "@parameter.inner",
 
                         -- You can also use captures from other query groups like `locals.scm`
                         ["as"] = { query = "@scope", query_group = "locals", desc = "Select language scope" },

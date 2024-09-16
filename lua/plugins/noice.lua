@@ -6,6 +6,7 @@ return{
     },
     config = function ()
         require("noice").setup()
+        vim.keymap.set( "n", "<leader>nd", "<cmd>Noice dismiss<CR>" ,{ noremap = true, silent = true })
 
     end,
 

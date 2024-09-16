@@ -13,7 +13,7 @@ return{
             float_opts = {
                 border = 'curved',
                 width = function()
-                    return math.floor(vim.o.columns * 0.35)
+                    return math.floor(vim.o.columns * 0.4)
                 end,
                 height = function()
                     return vim.o.lines - 5
@@ -22,7 +22,7 @@ return{
                 -- Position the float on the right side
                 row = 1,
                 col = function()
-                    return math.floor(vim.o.columns * 0.65)
+                    return math.floor(vim.o.columns * 0.6)
                 end,
             }
         })

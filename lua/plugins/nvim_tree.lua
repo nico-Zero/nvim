@@ -22,6 +22,9 @@ return{
                 ignore = false,
             },
         })
+        vim.keymap.set( {"n","v"}, "<leader>t-", ":NvimTreeResize -5<CR>", { noremap = true, silent = true })
+        vim.keymap.set( {"n","v"}, "<leader>t+", ":NvimTreeResize +5<CR>", { noremap = true, silent = true })
+        vim.keymap.set( "n", "<leader>pv", "<Cmd>Noice dismiss<CR>|<Cmd>NvimTreeToggle<CR>", { noremap = true, silent = true })
 
     end,
 

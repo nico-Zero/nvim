@@ -101,5 +101,8 @@ return{
                 },
             },
         })
+        local oil = require("oil")
+        vim.keymap.set( "n", "-", oil.open_float, { desc = "Open parent directory", noremap = true, silent = true })
+
     end
 }

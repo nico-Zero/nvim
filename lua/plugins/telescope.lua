@@ -38,5 +38,20 @@ return {
                 },
             },
         })
+        local builtin = require('telescope.builtin')
+        vim.keymap.set('n', '<leader>pf', builtin.find_files, { noremap = true, silent = true })
+        vim.keymap.set('n', '<leader>pg', builtin.live_grep, { noremap = true, silent = true })
+        vim.keymap.set('n', '<leader>fb', builtin.buffers, { noremap = true, silent = true })
+        vim.keymap.set('n', '<leader>fh', builtin.help_tags, { noremap = true, silent = true })
+        vim.keymap.set('n', '<leader>fc', builtin.commands, { noremap = true, silent = true })
+        vim.keymap.set('n', '<leader>fk', builtin.keymaps, { noremap = true, silent = true })
+        vim.keymap.set('n', "<leader>fd", builtin.lsp_definitions, { noremap = true, silent = true })
+        vim.keymap.set('n', "<leader>fq", builtin.quickfix, { noremap = true, silent = true })
+        vim.keymap.set('n', "<leader>fgs", builtin.git_status, { noremap = true, silent = true })
+        vim.api.nvim_set_keymap('n', 'z=', '<NOP>', { noremap = true, silent = true })
+        vim.keymap.set('n', "<leader>z", builtin.spell_suggest, { noremap = true, silent = true })
+        -- vim.keymap.set('n', "<A-j>", builtin.scroll{count = 1}, { noremap = true, silent = true })
+        -- vim.keymap.set('n', "<A-k>", builtin.scroll{count = -1}, { noremap = true, silent = true })
+
     end,
 }

@@ -17,13 +17,18 @@ return{
                 "SmiteshP/nvim-navic",
                 "MunifTanjim/nui.nvim"
             },
-            opts = { lsp = { auto_attach = true } }
+            opts = { lsp = { auto_attach = true } },
+            config = function ()
+
+                vim.keymap.set( "n", "<leader>nf", "<cmd>Navbuddy<CR>", { noremap = true, silent = true })
+            end,
         },
 
         version = false,
     },
     config = function()
         require("mason").setup()
+        vim.keymap.set( "n", "<leader>pm", ":Mason<CR>", { noremap = true, silent = true })
         require("mason-lspconfig").setup({
             handlers = {
                 function (server_name)
