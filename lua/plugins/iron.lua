@@ -50,9 +50,9 @@ return{
         }
 
         -- iron also has a list of commands, see :h iron-commands for all available commands
-        vim.keymap.set('n', '<space>sf', '<cmd>IronRepl<cr>', { noremap = true, silent = true })
+        -- vim.keymap.set('n', '<space>sf', '<cmd>IronRepl<cr>', { noremap = true, silent = true })
         vim.keymap.set('n', '<space>sr', '<cmd>IronRestart<cr>', { noremap = true, silent = true })
-        vim.keymap.set('n', '<space>ss', '<cmd>IronFocus<cr>', { noremap = true, silent = true })
-        vim.keymap.set('n', '<space>sh', '<cmd>IronHide<cr>', { noremap = true, silent = true })
+        -- vim.keymap.set('n', '<space>ss', '<cmd>IronFocus<cr>', { noremap = true, silent = true })
+        -- vim.keymap.set('n', '<space>sh', '<cmd>IronHide<cr>', { noremap = true, silent = true })
     end
 }

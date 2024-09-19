@@ -19,20 +19,23 @@ return{
             },
             opts = { lsp = { auto_attach = true } },
             config = function ()
-
-                vim.keymap.set( "n", "<leader>nf", "<cmd>Navbuddy<CR>", { noremap = true, silent = true })
+                require("nvim-navbuddy").setup()
+                vim.keymap.set( "n", "<leader>sf", "<cmd>Navbuddy<CR>", { noremap = true, silent = true })
             end,
         },
-
         version = false,
     },
     config = function()
         require("mason").setup()
         vim.keymap.set( "n", "<leader>pm", ":Mason<CR>", { noremap = true, silent = true })
+        local navbuddy = require("nvim-navbuddy")
         require("mason-lspconfig").setup({
             handlers = {
                 function (server_name)
                     require("lspconfig")[server_name].setup {
+                        on_attach = function(client, bufnr)
+                            navbuddy.attach(client, bufnr)
+                        end
                     }
                 end,
                 ["lua_ls"] = function ()
@@ -44,12 +47,18 @@ return{
                                     globals = { "vim" }
                                 }
                             }
-                        }
+                        },
+                        on_attach = function(client, bufnr)
+                            navbuddy.attach(client, bufnr)
+                        end
                     }
                 end,
                 ["bashls"] = function ()
                     require("lspconfig").bashls.setup({
-                        filetype = {"sh", "zsh" , "bash"}
+                        filetype = {"sh", "zsh" , "bash"},
+                        on_attach = function(client, bufnr)
+                            navbuddy.attach(client, bufnr)
+                        end
                     })
                 end,
                 ["pyright"] = function ()
@@ -62,6 +71,9 @@ return{
                             },
                         },
                         filetypes = {"python"},
+                        on_attach = function(client, bufnr)
+                            navbuddy.attach(client, bufnr)
+                        end
                     }
                 end,
                 ["rust_analyzer"] = function ()
@@ -70,7 +82,7 @@ return{
 
                     lspconfig.rust_analyzer.setup({
                         on_attach = function(client, bufnr)
-
+                            navbuddy.attach(client, bufnr)
                         end,
                         filetypes = {"rust"},
                         root_dir = util.root_pattern("Cargo.toml"),

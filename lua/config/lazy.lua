@@ -1,3 +1,18 @@
+-- setup ➡️ init
+-- requires ➡️ dependencies
+-- as ➡️ name
+-- opt ➡️ lazy
+-- run ➡️ build
+-- lock ➡️ pin
+-- disable=true ➡️ enabled = false
+-- tag='*' ➡️ version="*"
+-- after is not needed for most use-cases. Use dependencies otherwise.
+-- wants is not needed for most use-cases. Use dependencies otherwise.
+-- config don't support string type, use fun(LazyPlugin) instead.
+-- module is auto-loaded. No need to specify
+-- keys spec is different
+-- rtp can be accomplished with:
+
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
     vim.fn.system({

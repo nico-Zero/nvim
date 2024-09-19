@@ -90,7 +90,7 @@
 -- vim.keymap.set( "n", "<leader>mdt", "<Plug>MarkdownPreviewToggle", { noremap = true, silent = true })
 --
 -- -- 24.NavBuddy
--- vim.keymap.set( "n", "<leader>nf", "<cmd>Navbuddy<CR>", { noremap = true, silent = true })
+-- vim.keymap.set( "n", "<leader>sf", "<cmd>Navbuddy<CR>", { noremap = true, silent = true })
 --
 -- -- 25.Nvim-Cursorline
 -- -- 26.Noice
