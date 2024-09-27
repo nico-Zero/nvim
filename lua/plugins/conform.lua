@@ -1,11 +1,11 @@
 return {
     {
-        'stevearc/conform.nvim',
+        "stevearc/conform.nvim",
         opts = {},
-        config = function ()
+        config = function()
             require("conform").setup({
                 formatters_by_ft = {
-                    lua = { "stylua" },
+                    lua = { "luaformatter" },
                     -- Conform will run multiple formatters sequentially
                     python = { "isort", "black" },
                     -- You can customize some of the format options for the filetype (:help conform.format)
@@ -19,6 +19,6 @@ return {
                     lsp_format = "fallback",
                 },
             })
-        end
-    }
+        end,
+    },
 }
