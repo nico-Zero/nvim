@@ -31,7 +31,9 @@ return{
                     node_decremental = "<bs>",
                 },
             },
-
+            textobjects = {
+                enable = true,
+            },
         })
     end,
 

@@ -6,7 +6,5 @@ return{
     event = "VeryLazy",
     config = function ()
         vim.keymap.set( "n", "<leader>mdt", "<Plug>MarkdownPreviewToggle", { noremap = true, silent = true })
-
     end,
-
 }

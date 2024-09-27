@@ -8,6 +8,23 @@ return {
     version = '0.1.8',
     event = "VeryLazy",
     config = function ()
+        local actions = require('telescope.actions')
+        local action_state = require('telescope.actions.state')
+
+        local open_help_in_vertical_split = function (prompt_bufnr)
+            local selection = action_state.get_selected_entry()
+            actions.close(prompt_bufnr)
+            if selection and selection.value then
+                vim.cmd("vert help " .. selection.value)
+            end
+        end
+        local open_man_pages_in_vertical_split = function (prompt_bufnr)
+            local selection = action_state.get_selected_entry()
+            actions.close(prompt_bufnr)
+            if selection and selection.value then
+                vim.cmd("vert Man " .. selection.value)
+            end
+        end
         require("telescope").setup({
             defaults = {
                 vimgrep_arguments = {
@@ -24,15 +41,45 @@ return {
                         ["<M-j>"] = "move_selection_next", -- Move to next result
                         ["<M-k>"] = "move_selection_previous", -- Move to previous result
                         ["<C-q>"] = "send_selected_to_qflist", -- Send selected to quickfix list
+                        ["<C-s>"] = function(prompt_bufnr)
+                            local selection = action_state.get_selected_entry()
+                            vim.fn.system('nsxiv ' .. selection.path)
+                        end,
+                        ["<M-CR>"] = function(prompt_bufnr)
+                            actions.file_vsplit(prompt_bufnr)
+                        end,
                     },
                     n = { -- Normal mode
                         ["<M-j>"] = "move_selection_next", -- Move to next result
                         ["<M-k>"] = "move_selection_previous", -- Move to previous result
                         ["<C-q>"] = require('telescope.actions').send_selected_to_qflist + require('telescope.actions').open_qflist, -- Send selected to quickfix list and open it
+                        ["<M-CR>"] = function(prompt_bufnr)
+                            actions.file_vsplit(prompt_bufnr)
+                        end,
                     },
                 },
             },
             pickers = {
+                help_tags = {
+                    mappings = {
+                        i = {
+                            ["<CR>"] =open_help_in_vertical_split
+                        },
+                        n = {
+                            ["<CR>"] =open_help_in_vertical_split
+                        }
+                    }
+                },
+                man_pages = {
+                    mappings = {
+                        i = {
+                            ["<CR>"] = open_man_pages_in_vertical_split
+                        },
+                        n = {
+                            ["<CR>"] = open_man_pages_in_vertical_split
+                        },
+                    }
+                },
                 find_files = {
                     find_command = { "rg", "--files", "--hidden", "--no-ignore", "--max-depth=6" },
                 },
@@ -45,11 +92,13 @@ return {
         vim.keymap.set('n', '<leader>fh', builtin.help_tags, { noremap = true, silent = true })
         vim.keymap.set('n', '<leader>fc', builtin.commands, { noremap = true, silent = true })
         vim.keymap.set('n', '<leader>fk', builtin.keymaps, { noremap = true, silent = true })
-        vim.keymap.set('n', "<leader>fd", builtin.lsp_definitions, { noremap = true, silent = true })
+        vim.keymap.set('n', "<leader>df", builtin.treesitter, { noremap = true, silent = true })
         vim.keymap.set('n', "<leader>fq", builtin.quickfix, { noremap = true, silent = true })
         vim.keymap.set('n', "<leader>fgs", builtin.git_status, { noremap = true, silent = true })
         vim.api.nvim_set_keymap('n', 'z=', '<NOP>', { noremap = true, silent = true })
         vim.keymap.set('n', "<leader>z", builtin.spell_suggest, { noremap = true, silent = true })
+        vim.keymap.set('n', "<leader>nm", ":Telescope notify<CR>", { noremap = true, silent = true })
+        vim.keymap.set('n', "<leader>fm", builtin.man_pages, { noremap = true, silent = true })
         -- vim.keymap.set('n', "<A-j>", builtin.scroll{count = 1}, { noremap = true, silent = true })
         -- vim.keymap.set('n', "<A-k>", builtin.scroll{count = -1}, { noremap = true, silent = true })
 

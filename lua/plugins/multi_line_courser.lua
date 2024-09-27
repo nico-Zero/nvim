@@ -11,7 +11,5 @@ return{
         vim.keymap.set( {"n", "x"}, "<leader>cd", "<Cmd>MultipleCursorsAddJumpNextMatch<CR>", { noremap = true, silent = true })
         vim.keymap.set( {"n", "x"}, "<leader>cD", "<Cmd>MultipleCursorsJumpNextMatch<CR>", { noremap = true, silent = true })
         vim.keymap.set( {"n", "x"}, "<leader>cl", "<Cmd>MultipleCursorsLock<CR>", { noremap = true, silent = true })
-
-
     end,
 }

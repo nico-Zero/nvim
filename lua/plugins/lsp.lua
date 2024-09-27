@@ -100,12 +100,24 @@ return{
 
         local cmp = require'cmp'
         local luasnip = require("luasnip")
-
         cmp.setup({
             snippet = {
                 expand = function(args)
                     luasnip.lsp_expand(args.body)
                 end,
+            },
+            sorting = {
+                priority_weight = 1,
+                comparators = {
+
+                    cmp.config.compare.offset, -- Compares items based on their position relative to the cursor. Items closer to the cursor are prioritized.
+                    cmp.config.compare.length, -- Gives preference to shorter items over longer ones. This can help in reducing clutter and prioritizing concise matches.
+                    cmp.config.compare.exact, -- Prioritizes items that exactly match the input text. This means if you type foo, a completion item fooBar would be less preferred than foo.
+                    cmp.config.compare.score, -- Uses an internal scoring system to determine which items should appear first based on how well they match the context.
+                    cmp.config.compare.kind, -- Sorts items based on their kind (e.g., function, variable, class). This is useful if you want to group similar types together.
+                    cmp.config.compare.sort_text, -- Sorts items based on the sortText field of the completion item. This can be customized in the LSP server response.
+                    cmp.config.compare.order, -- Sorts based on the order in which items were provided by the completion source. Items that are presented earlier are given higher priority.
+                }
             },
             mapping = cmp.mapping.preset.insert({
                 ['<C-b>'] = cmp.mapping.scroll_docs(8),
@@ -117,38 +129,11 @@ return{
                 ['<Tab>'] = cmp.mapping.select_next_item({behavior = 'select'}),
             }),
             sources = cmp.config.sources({
-                { name = 'nvim_lsp' },
-                { name = 'luasnip', option = { show_autosnippets = true }},
-                { name = 'buffer' },
-                { name = 'path' },
+                { name = 'nvim_lsp' , priority_weight=1},
+                { name = 'luasnip', option = { show_autosnippets = true }, priority_weight = 2},
+                { name = 'buffer' , priority_weight = 3},
+                { name = 'path' , priority_weight=4},
             }),
-            -- sorting = {
-            --     priority_weight = 2,
-            --     comparators = {
-            --         function(entry1, entry2)
-            --             local kind1 = entry1:get_kind()
-            --             local kind2 = entry2:get_kind()
-            --             if kind1 == kind2 then
-            --                 return nil
-            --             end
-            --             if kind1 == cmp.lsp.CompletionItemKind.Snippet then
-            --                 return true
-            --             end
-            --             if kind2 == cmp.lsp.CompletionItemKind.Snippet then
-            --                 return false
-            --             end
-            --             return nil
-            --         end,
-            --         cmp.config.compare.offset,
-            --         cmp.config.compare.exact,
-            --         cmp.config.compare.score,
-            --         cmp.config.compare.recently_used,
-            --         cmp.config.compare.kind,
-            --         cmp.config.compare.sort_text,
-            --         cmp.config.compare.length,
-            --         cmp.config.compare.order,
-            --     },
-            -- },
         })
 
         cmp.setup.cmdline({ '/', '?' }, {

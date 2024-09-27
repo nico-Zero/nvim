@@ -63,3 +63,7 @@ vim.g.lazydev_enabled = true
 -- Indent BlenkLine
 vim.opt.list = true
 -- vim.opt.listchars:append "eol:↩"
+
+
+vim.opt.splitright = true
+vim.opt.splitbelow = true
