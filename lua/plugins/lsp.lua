@@ -159,6 +159,30 @@ return {
         "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
         config = function()
             require("lsp_lines").setup()
-        end,
+
+            vim.diagnostic.config({
+                virtual_text = true,
+                virtual_lines = false,
+            })
+            -- Function to enable lsp_lines only in file buffers
+            local function enable_lsp_lines_for_files()
+                if vim.fn.bufname('%') ~= '' then -- Check if the buffer is associated with a file
+                    vim.diagnostic.config({
+                        virtual_text = false,
+                        virtual_lines = true,
+                    })
+                else
+                    vim.diagnostic.config({
+                        virtual_text = true,
+                        virtual_lines = false,
+                    })
+                end
+            end
+
+            -- Trigger the function on BufEnter and FileType events
+            vim.api.nvim_create_autocmd({ 'BufEnter', 'FileType' }, {
+                callback = enable_lsp_lines_for_files,
+            })
+        end
     },
 }

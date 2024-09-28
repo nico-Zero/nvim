@@ -37,11 +37,8 @@ vim.opt.updatetime = 50
 vim.g.mapleader = " "
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-	-- delay update diagnostics
-	update_in_insert = true,
-})
-vim.diagnostic.config({
-	virtual_text = false,
+    -- delay update diagnostics
+    update_in_insert = true,
 })
 
 vim.opt.cursorline = true
