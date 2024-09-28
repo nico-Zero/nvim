@@ -1,19 +1,24 @@
-return{
+return {
     'nvim-lualine/lualine.nvim',
-    dependencies = { 'nvim-tree/nvim-web-devicons'},
-    config = function ()
-        require('lualine').setup({
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
+    config = function()
+        require('lualine').setup {
             options = {
-                theme = "tokyonight",
+                theme = 'tokyonight',
+                section_separators = '',
+                component_separators = '',
+                globalstatus = true,
             },
             sections = {
-                lualine_x = {
-                    {
-                        function() return require("noice").api.status.mode.get() end,
-                        cond = function() return package.loaded["noice"] and require("noice").api.status.mode.has() end
-                    },
+                lualine_a = { 'mode' },
+                lualine_b = { 'branch', 'diff' },
+                lualine_c = { 'filename' },
+                lualine_x = { 'encoding', 'fileformat', 'filetyee' },
+                lualine_y = { 'progress', "location" },
+                lualine_z = {
+                    { require("recorder").displaySlots }, { require("recorder").recordingStatus },
                 },
             },
-        })
-    end
+        }
+    end,
 }

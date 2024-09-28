@@ -24,6 +24,7 @@ return {
                     vim.keymap.set("n", "<leader>sf", "<cmd>Navbuddy<CR>", { noremap = true, silent = true })
                 end,
             },
+
             version = false,
         },
         config = function()
@@ -161,6 +162,8 @@ return {
 
             vim.diagnostic.config({
                 virtual_text = false,
+                signs = false,
+                underline = false,
             })
         end
     },

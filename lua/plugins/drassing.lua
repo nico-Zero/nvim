@@ -1,7 +1,6 @@
-return{
+return {
     "stevearc/dressing.nvim",
-    config = function ()
+    config = function()
         require("dressing").setup()
     end,
-
 }
