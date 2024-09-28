@@ -18,5 +18,6 @@ return {
             level = require("notify").level,
         })
         vim.notify = require("notify")
+        vim.keymap.set("n", "<leader>nd", require("notify").dismiss, { noremap = true, silent = true })
     end,
 }
