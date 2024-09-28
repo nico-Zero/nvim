@@ -110,35 +110,9 @@ return {
                 sorting = {
                     priority_weight = 1,
                     comparators = {
-                        -- Below is the snippet comparator
-                        function(entry1, entry2)
-                            local kind1 = entry1:get_kind()
-                            local kind2 = entry2:get_kind()
-
-                            -- 15 corresponds to snippets in LSP
-                            if kind1 == 15 and kind2 ~= 15 then
-                                return false
-                            elseif kind2 == 15 and kind1 ~= 15 then
-                                return true
-                            end
-                        end,
-
-                        cmp.config.compare.offset, -- Compares items based on their position relative to the cursor. Items closer to the cursor are prioritized.
-                        cmp.config.compare.exact,  -- Prioritizes items that exactly match the input text. This means if you type foo, a completion item fooBar would be less preferred than foo.
-                        cmp.config.compare.score,  -- Uses an internal scoring system to determine which items should appear first based on how well they match the context.
-
-                        -- Below comparator can handle auto-import sorting
-                        function(entry1, entry2)
-                            local source1 = entry1.source.name
-                            local source2 = entry2.source.name
-
-                            if source1 == 'nvim_lsp' and source2 ~= 'nvim_lsp' then
-                                return true
-                            elseif source2 == 'nvim_lsp' and source1 ~= 'nvim_lsp' then
-                                return false
-                            end
-                        end,
-
+                        cmp.config.compare.offset,    -- Compares items based on their position relative to the cursor. Items closer to the cursor are prioritized.
+                        cmp.config.compare.exact,     -- Prioritizes items that exactly match the input text. This means if you type foo, a completion item fooBar would be less preferred than foo.
+                        cmp.config.compare.score,     -- Uses an internal scoring system to determine which items should appear first based on how well they match the context.
                         cmp.config.compare.kind,      -- Sorts items based on their kind (e.g., function, variable, class). This is useful if you want to group similar types together.
                         cmp.config.compare.sort_text, -- Sorts items based on the sortText field of the completion item. This can be customized in the LSP server response.
                         cmp.config.compare.length,    -- Gives preference to shorter items over longer ones. This can help in reducing clutter and prioritizing concise matches.
