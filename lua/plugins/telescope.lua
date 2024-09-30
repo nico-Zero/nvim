@@ -7,18 +7,18 @@ return {
     'nvim-telescope/telescope.nvim',
     version = '0.1.8',
     event = "VeryLazy",
-    config = function ()
+    config = function()
         local actions = require('telescope.actions')
         local action_state = require('telescope.actions.state')
 
-        local open_help_in_vertical_split = function (prompt_bufnr)
+        local open_help_in_vertical_split = function(prompt_bufnr)
             local selection = action_state.get_selected_entry()
             actions.close(prompt_bufnr)
             if selection and selection.value then
                 vim.cmd("vert help " .. selection.value)
             end
         end
-        local open_man_pages_in_vertical_split = function (prompt_bufnr)
+        local open_man_pages_in_vertical_split = function(prompt_bufnr)
             local selection = action_state.get_selected_entry()
             actions.close(prompt_bufnr)
             if selection and selection.value then
@@ -37,8 +37,8 @@ return {
                     "--no-ignore",
                 },
                 mappings = {
-                    i = { -- Insert mode
-                        ["<M-j>"] = "move_selection_next", -- Move to next result
+                    i = {                                      -- Insert mode
+                        ["<M-j>"] = "move_selection_next",     -- Move to next result
                         ["<M-k>"] = "move_selection_previous", -- Move to previous result
                         ["<C-q>"] = "send_selected_to_qflist", -- Send selected to quickfix list
                         ["<C-s>"] = function(prompt_bufnr)
@@ -49,10 +49,11 @@ return {
                             actions.file_vsplit(prompt_bufnr)
                         end,
                     },
-                    n = { -- Normal mode
-                        ["<M-j>"] = "move_selection_next", -- Move to next result
-                        ["<M-k>"] = "move_selection_previous", -- Move to previous result
-                        ["<C-q>"] = require('telescope.actions').send_selected_to_qflist + require('telescope.actions').open_qflist, -- Send selected to quickfix list and open it
+                    n = {                                                                                                            -- Normal mode
+                        ["<M-j>"] = "move_selection_next",                                                                           -- Move to next result
+                        ["<M-k>"] = "move_selection_previous",                                                                       -- Move to previous result
+                        ["<C-q>"] = require('telescope.actions').send_selected_to_qflist +
+                        require('telescope.actions').open_qflist,                                                                    -- Send selected to quickfix list and open it
                         ["<M-CR>"] = function(prompt_bufnr)
                             actions.file_vsplit(prompt_bufnr)
                         end,
@@ -63,10 +64,10 @@ return {
                 help_tags = {
                     mappings = {
                         i = {
-                            ["<CR>"] =open_help_in_vertical_split
+                            ["<CR>"] = open_help_in_vertical_split
                         },
                         n = {
-                            ["<CR>"] =open_help_in_vertical_split
+                            ["<CR>"] = open_help_in_vertical_split
                         }
                     }
                 },
@@ -101,6 +102,5 @@ return {
         vim.keymap.set('n', "<leader>fm", builtin.man_pages, { noremap = true, silent = true })
         -- vim.keymap.set('n', "<A-j>", builtin.scroll{count = 1}, { noremap = true, silent = true })
         -- vim.keymap.set('n', "<A-k>", builtin.scroll{count = -1}, { noremap = true, silent = true })
-
     end,
 }

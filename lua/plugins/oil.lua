@@ -1,8 +1,8 @@
-return{
+return {
     'stevearc/oil.nvim',
     event = "VeryLazy",
     dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if prefer nvim-web-devicons
-    config = function ()
+    config = function()
         require("oil").setup({
             -- Oil will take over directory buffers (e.g. `vim .` or `:e src/`)
             -- Set to false if you want some other plugin (e.g. netrw) to open when you edit directories.
@@ -102,6 +102,7 @@ return{
             },
         })
         local oil = require("oil")
-        vim.keymap.set( "n", "<leader>pv", oil.toggle_float, { desc = "Open parent directory", noremap = true, silent = true })
+        vim.keymap.set("n", "<leader>pv", oil.toggle_float,
+            { desc = "Open parent directory", noremap = true, silent = true })
     end
 }

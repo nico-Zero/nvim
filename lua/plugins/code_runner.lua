@@ -1,6 +1,6 @@
-return{
+return {
     'CRAG666/code_runner.nvim',
-    config = function ()
+    config = function()
         require('code_runner').setup({
             mode = "toggleterm",
             filetype = {
@@ -16,8 +16,8 @@ return{
                     "rustc $fileName &&",
                     "$dir/$fileNameWithoutExt"
                 },
-                c = function(...)
-                    c_base = {
+                c = function()
+                    local c_base = {
                         "cd $dir &&",
                         "gcc $fileName -o",
                         "/tmp/$fileNameWithoutExt",
@@ -41,7 +41,6 @@ return{
         vim.keymap.set('n', '<leader>rc', ':RunClose<CR>', { noremap = true, silent = true })
         vim.keymap.set('n', '<leader>crf', ':CRFiletype<CR>', { noremap = true, silent = true })
         vim.keymap.set('n', '<leader>crp', ':CRProjects<CR>', { noremap = true, silent = true })
-
     end,
 
 }

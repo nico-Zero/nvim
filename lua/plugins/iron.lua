@@ -1,7 +1,7 @@
-return{
+return {
     'Vigemus/iron.nvim',
-    ft = {"python"},
-    config = function ()
+    ft = { "python" },
+    config = function()
         local iron = require("iron.core")
         local view = require("iron.view")
         iron.setup {
@@ -10,7 +10,7 @@ return{
                 scratch_repl = true,
                 repl_definition = {
                     sh = {
-                        command = {"zsh"}
+                        command = { "zsh" }
                     },
                     python = {
                         command = {

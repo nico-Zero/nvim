@@ -1,4 +1,4 @@
-vim.keymap.set("n", "<leader>rn", ":IncRename ", { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>rn", "<cmd>IncRename ", { noremap = true, silent = true })
 vim.keymap.set("n", "<A-h>", "V<", { noremap = true, silent = true })
 vim.keymap.set("n", "<A-l>", "V>", { noremap = true, silent = true })
 vim.keymap.set("v", "<A-h>", "<", { noremap = true, silent = true })

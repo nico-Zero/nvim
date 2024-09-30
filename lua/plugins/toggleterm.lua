@@ -1,13 +1,13 @@
-return{
+return {
     "akinsho/toggleterm.nvim",
-    config = function ()
+    config = function()
         require("toggleterm").setup({
             size = 20,
             start_in_insert = true,
             open_mapping = [[<A-,>]],
             direction = "float",
-            autochdir=true,
-            on_create=function ()
+            autochdir = true,
+            on_create = function()
                 vim.cmd("TermExec cmd='clear'")
             end,
             float_opts = {

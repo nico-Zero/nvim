@@ -30,6 +30,13 @@ return {
         config = function()
             require("mason").setup()
             vim.keymap.set("n", "<leader>pm", ":Mason<CR>", { noremap = true, silent = true })
+
+            local disabled_filetypes = { 'json' }
+            local function disable_lsp_for_some(client, bufnr)
+                if vim.tbl_contains(disabled_filetypes, vim.bo[bufnr].filetype) then
+                    vim.lsp.stop_client(client.id)
+                end
+            end
             local navbuddy = require("nvim-navbuddy")
             require("mason-lspconfig").setup({
                 handlers = {
@@ -37,6 +44,7 @@ return {
                         require("lspconfig")[server_name].setup({
                             on_attach = function(client, bufnr)
                                 navbuddy.attach(client, bufnr)
+                                disable_lsp_for_some(client, bufnr)
                             end,
                         })
                     end,
@@ -52,6 +60,7 @@ return {
                             },
                             on_attach = function(client, bufnr)
                                 navbuddy.attach(client, bufnr)
+                                disable_lsp_for_some(client, bufnr)
                             end,
                         })
                     end,
@@ -60,6 +69,7 @@ return {
                             filetype = { "sh", "zsh", "bash" },
                             on_attach = function(client, bufnr)
                                 navbuddy.attach(client, bufnr)
+                                disable_lsp_for_some(client, bufnr)
                             end,
                         })
                     end,
@@ -75,6 +85,7 @@ return {
                             filetypes = { "python" },
                             on_attach = function(client, bufnr)
                                 navbuddy.attach(client, bufnr)
+                                disable_lsp_for_some(client, bufnr)
                             end,
                         })
                     end,
@@ -85,6 +96,7 @@ return {
                         lspconfig.rust_analyzer.setup({
                             on_attach = function(client, bufnr)
                                 navbuddy.attach(client, bufnr)
+                                disable_lsp_for_some(client, bufnr)
                             end,
                             filetypes = { "rust" },
                             root_dir = util.root_pattern("Cargo.toml"),
@@ -136,7 +148,6 @@ return {
                     { name = "path",     priority_weight = 4 },
                 }),
             })
-
             cmp.setup.cmdline({ "/", "?" }, {
                 mapping = cmp.mapping.preset.cmdline(),
                 sources = {
@@ -153,6 +164,13 @@ return {
                     { name = "cmdline" },
                 }),
             })
+
+
+            for _, filetype in ipairs(disabled_filetypes) do
+                cmp.setup.filetype(filetype, {
+                    sources = {}
+                })
+            end
         end,
     },
     {
@@ -162,8 +180,8 @@ return {
 
             vim.diagnostic.config({
                 virtual_text = false,
-                signs = false,
-                underline = false,
+                signs = true,
+                underline = true,
             })
         end
     },

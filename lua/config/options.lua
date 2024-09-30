@@ -37,17 +37,13 @@ vim.g.lazydev_enabled = true
 vim.opt.splitright = true
 vim.opt.splitbelow = true
 
-
 -- ....................................
 -- optionally enable 24-bit colour
 vim.opt.termguicolors = true
 
--- Indent BlenkLine
-vim.opt.list = true
-
 vim.opt.cmdheight = 0
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics,
-    { -- delay update diagnostics
+    {
         update_in_insert = true,
     })
