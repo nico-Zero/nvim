@@ -1,4 +1,4 @@
-return{
+return {
     "L3MON4D3/LuaSnip",
     version = "v2.*",
     build = "make install_jsregexp",
@@ -44,35 +44,33 @@ return{
 
         ls.add_snippets("all", {
             s("curtime",
-            f(function()
-                return os.date "%D - %H:%M"
-            end)
+                f(function()
+                    return os.date "%D - %H:%M"
+                end)
             ),
-            s("name" ,{
+            s("name", {
                 t('Yuvraj Mahilange')
             }),
         })
-        ls.add_snippets("lua",{
-            s("hello" ,{
+        ls.add_snippets("lua", {
+            s("hello", {
                 t('print("Hello, World!!!")')
             }),
         })
         ls.add_snippets("python", {
             s("def",
-            fmt(
-            [[
+                fmt(
+                    [[
             def {} () -> {} :
                 return {}
             ]],
-            {
-                i(1, "testname"),
-                i(2, "None"),
-                i(0, "None"),
-            })
+                    {
+                        i(1, "testname"),
+                        i(2, "None"),
+                        i(0, "None"),
+                    })
             ),
         })
-
-
     end,
 
 }
