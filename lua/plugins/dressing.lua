@@ -6,7 +6,7 @@ return {
                 enabled = true,
             },
             select = {
-                enabled = false, -- Disable select component, only use for input
+                enabled = false,
             },
         })
     end,
