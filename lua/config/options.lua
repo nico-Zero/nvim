@@ -69,4 +69,4 @@ vim.opt.statusline = vim.opt.statusline +
 vim.opt.statusline = vim.opt.statusline +
     "%l:%c %p%% [%{&fileformat}] [%{&fileencoding}] [%{&filetype}]"
 vim.opt.statusline = vim.opt.statusline +
-    "%{v:lua.recorder_info()}"
+    " %{v:lua.recorder_info()}"

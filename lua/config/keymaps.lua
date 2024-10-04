@@ -21,7 +21,6 @@ map("n", "Y", 'v$"+y', { noremap = true, silent = true })
 map("n", "P", "Vp", { noremap = true, silent = true })
 map("n", "<M-bs>", "diw", { noremap = true, silent = true })
 map("n", "gcp", "vipgc", { noremap = true, silent = true })
-map("n", "<leader>a<CR>", "ggVG=", { noremap = true, silent = true })
 map('n', '<leader>tw', ':set wrap!<CR>', { noremap = true, silent = true })
 
 function ToggleBQF()
