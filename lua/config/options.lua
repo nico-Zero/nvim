@@ -43,30 +43,35 @@ vim.opt.termguicolors = true
 
 vim.opt.cmdheight = 0
 
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics,
-    {
-        update_in_insert = true,
-    })
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+	update_in_insert = true,
+})
 
 _G.git_info = function()
-    local gitsigns = vim.b.gitsigns_status or ''
-    return gitsigns
+	local gitsigns = vim.b.gitsigns_status or ""
+	return gitsigns
 end
 
 -- Define the function in the global namespace
 _G.recorder_info = function()
-    local recorder = require('recorder')
-    if recorder.recordingStatus() then
-        return recorder.recordingStatus()
-    else
-        return recorder.displaySlots()
-    end
+	local recorder = require("recorder")
+	if recorder.recordingStatus() then
+		return recorder.recordingStatus()
+	else
+		return recorder.displaySlots()
+	end
 end
 -- Configure the status line
 vim.opt.statusline = "%f %m %r %h%w %{v:lua.git_info()}"
-vim.opt.statusline = vim.opt.statusline +
-    "%="
-vim.opt.statusline = vim.opt.statusline +
-    "%l:%c %p%% [%{&fileformat}] [%{&fileencoding}] [%{&filetype}]"
-vim.opt.statusline = vim.opt.statusline +
-    " %{v:lua.recorder_info()}"
+vim.opt.statusline = vim.opt.statusline + "%="
+vim.opt.statusline = vim.opt.statusline + "%l:%c %p%% [%{&fileformat}] [%{&fileencoding}] [%{&filetype}]"
+vim.opt.statusline = vim.opt.statusline + " %{v:lua.recorder_info()}"
+
+vim.schedule(function()
+	vim.opt.clipboard = "unnamedplus"
+end)
+vim.opt.list = true
+vim.opt.listchars = { trail = "·", nbsp = "␣" }
+vim.opt.breakindent = true
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
