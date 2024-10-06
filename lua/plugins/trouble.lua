@@ -11,6 +11,7 @@ return {
                     preview_float = {
                         mode = "diagnostics",
                         preview = {
+                            focus = true,
                             type = "float",
                             relative = "editor",
                             border = "rounded",

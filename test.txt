@@ -1,0 +1,63 @@
+1.Createanewfile.
+2.Openanexistingfile.
+3.Savechangestoafile.
+4.ExitVim.
+5.Switchbetweennormalandinsertmodes.
+6.Copyandpastetext.
+7.Undoandredochanges.
+8.Searchforawordinthefile.
+9.Replaceawordinthefile.
+10.Usevisualmodetoselecttext.
+11.Usesplitwindowstoeditmultiplefiles.
+12.CustomizekeybindingsinVim.
+13.Usepluginstoenhancefunctionality.
+14.Practicenavigatingthroughthetext.
+15.LearnhowtomanagebuffersinVim.
+
+1. Create a new file.
+2. Open an existing file.
+3. Save changes to a file.
+4. Exit Vim.
+5. Switch between normal and insert modes.
+6. Copy and paste text.
+7. Undo and redo changes.
+8. Search for a word in the file.
+9. Replace a word in the file.
+10. Use visual mode to select text.
+11. Use split windows to edit multiple files.
+12. Customize key bindings in Vim.
+13. Use plugins to enhance functionality.
+14. Practice navigating through the text.
+15. Learn how to manage buffers in Vim.
+
+1. Create a new file.
+2. Open an existing file.
+3. Save changes to a file.
+4. Exit Vim.
+5. Switch between normal and insert modes.
+6. Copy and paste text.
+7. Undo and redo changes.
+8. Search for a word in the file.
+9. Replace a word in the file.
+10. Use visual mode to select text.
+11. Use split windows to edit multiple files.
+12. Customize key bindings in Vim.
+13. Use plugins to enhance functionality.
+14. Practice navigating through the text.
+15. Learn how to manage buffers in Vim.
+
+1. Create a new file.
+2. Open an existing file.
+3. Save changes to a file.
+4. Exit Vim.
+5. Switch between normal and insert modes.
+6. Copy and paste text.
+7. Undo and redo changes.
+8. Search for a word in the file.
+9. Replace a word in the file.
+10. Use visual mode to select text.
+11. Use split windows to edit multiple files.
+12. Customize key bindings in Vim.
+13. Use plugins to enhance functionality.
+14. Practice navigating through the text.
+15. Learn how to manage buffers in Vim.

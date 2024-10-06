@@ -1,5 +1,10 @@
 return {
     "brenton-leighton/multiple-cursors.nvim",
+    opts = {
+        custom_key_maps = {
+            { "n", "<Leader>|", function() require("multiple-cursors").align() end, { noremap = true, silent = true } },
+        },
+    },
     version = "*",
     config = function()
         require("multiple-cursors").setup()
