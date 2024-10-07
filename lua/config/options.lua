@@ -75,12 +75,19 @@ vim.opt.listchars = { trail = "·", nbsp = "␣" }
 vim.opt.breakindent = true
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
+
+-- vim.opt.iskeyword:remove("_")
+
 vim.diagnostic.config({
-    -- severity_sort = true, -- Optional: Sorts diagnostics by severity
-    -- virtual_text = {
-    --     severity = {
-    --         min = vim.diagnostic.severity.WARN,
-    --     },
-    -- },
-    update_in_insert = true
+    virtual_text = {
+        prefix = "●",
+        severity = { min = vim.diagnostic.severity.WARN },
+    },
+    float = {
+        border = "rounded",
+        severity = { min = vim.diagnostic.severity.WARN },
+    },
+    signs = true,
+    underline = true,
+    update_in_insert = true,
 })
