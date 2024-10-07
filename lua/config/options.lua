@@ -78,7 +78,17 @@ vim.opt.smartcase = true
 
 -- vim.opt.iskeyword:remove("_")
 
+
 vim.diagnostic.config({
-    virtual_lines = true,
+    virtual_text = {
+        prefix = "●",
+        severity = { min = vim.diagnostic.severity.WARN },
+    },
+    float = {
+        border = "rounded",
+        severity = { min = vim.diagnostic.severity.WARN },
+    },
+    signs = true,
+    underline = true,
     update_in_insert = true,
 })

@@ -374,32 +374,4 @@ return {
             })
         end,
     },
-    {
-        "nico-Zero/lsp_lines",
-        config = function()
-            require("lsp_lines").setup()
-            vim.diagnostic.config({
-                virtual_text = false,
-                signs = true,
-                underline = true,
-            })
-            vim.diagnostic.config({
-                virtual_line = {},
-            })
-
-            -- vim.api.nvim_create_autocmd("BufEnter", {
-            --     pattern = "Lazy",
-            --     callback = function()
-            --         vim.diagnostic.enable(false)
-            --     end,
-            -- })
-            --
-            -- vim.api.nvim_create_autocmd("BufLeave", {
-            --     pattern = "Lazy",
-            --     callback = function()
-            --         vim.diagnostic.enable(true)
-            --     end,
-            -- })
-        end,
-    },
 }
