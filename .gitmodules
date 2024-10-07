@@ -1,0 +1,3 @@
+[submodule "custom_plugin/lsp_lines"]
+	path = custom_plugin/lsp_lines
+	url = https:github.com/nico-Zero/lsp_lines.git
