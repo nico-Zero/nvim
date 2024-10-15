@@ -57,29 +57,30 @@ return {
                     map("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
 
                     local client = vim.lsp.get_client_by_id(event.data.client_id)
-                    if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight) then
-                        local highlight_augroup = vim.api.nvim_create_augroup("lsp-highlight", { clear = false })
-                        vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
-                            buffer = event.buf,
-                            group = highlight_augroup,
-                            callback = vim.lsp.buf.document_highlight,
-                        })
 
-                        vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
-                            buffer = event.buf,
-                            group = highlight_augroup,
-                            callback = vim.lsp.buf.clear_references,
-                        })
-
-                        vim.api.nvim_create_autocmd("LspDetach", {
-                            group = vim.api.nvim_create_augroup("lsp-detach", { clear = true }),
-                            callback = function(event2)
-                                vim.lsp.buf.clear_references()
-                                vim.api.nvim_clear_autocmds({ group = "lsp-highlight", buffer = event2.buf })
-                            end,
-                        })
-                    end
-
+                    -- if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight) then
+                    --     local highlight_augroup = vim.api.nvim_create_augroup("lsp-highlight", { clear = false })
+                    --     vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
+                    --         buffer = event.buf,
+                    --         group = highlight_augroup,
+                    --         callback = vim.lsp.buf.document_highlight,
+                    --     })
+                    --
+                    --     vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
+                    --         buffer = event.buf,
+                    --         group = highlight_augroup,
+                    --         callback = vim.lsp.buf.clear_references,
+                    --     })
+                    --
+                    --     vim.api.nvim_create_autocmd("LspDetach", {
+                    --         group = vim.api.nvim_create_augroup("lsp-detach", { clear = true }),
+                    --         callback = function(event2)
+                    --             vim.lsp.buf.clear_references()
+                    --             vim.api.nvim_clear_autocmds({ group = "lsp-highlight", buffer = event2.buf })
+                    --         end,
+                    --     })
+                    -- end
+                    --
                     if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint) then
                         map("<leader>th", function()
                             vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = event.buf }))
@@ -154,7 +155,7 @@ return {
             --
             --  You can press `g?` for help in this menu.
             require("mason").setup()
-            vim.keymap.set("n", "<leader>pm", ":Mason", { noremap = true, silent = true })
+            vim.keymap.set("n", "<leader>pm", ":Mason<CR>", { noremap = true, silent = true })
 
             -- You can add other tools here that you want Mason to install
             -- for you, so that they are available from within Neovim.
