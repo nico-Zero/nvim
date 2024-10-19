@@ -33,3 +33,6 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 -- vim.api.nvim_create_autocmd("CursorHold", {
 --     callback = open_diagnostics_float,
 -- })
+
+-- vim.o.updatetime = 500
+-- vim.cmd [[autocmd CursorHold * lua vim.diagnostic.open_float(nil, {focus=false})]]

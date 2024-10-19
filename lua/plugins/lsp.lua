@@ -51,9 +51,6 @@ return {
                         require("telescope.builtin").lsp_dynamic_workspace_symbols,
                         "[W]orkspace [S]ymbols"
                     )
-                    map("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
-                    map("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction", { "n", "x" })
-                    map("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
 
                     -- local client = vim.lsp.get_client_by_id(event.data.client_id)
 
@@ -101,6 +98,8 @@ return {
                     -- capabilities = {},
                     on_attach = function(client, bufnr)
                         navbuddy.attach(client, bufnr)
+                        client.server_capabilities.document_formatting = false
+                        client.server_capabilities.document_range_formatting = false
                     end,
                     settings = {
                         python = {
@@ -129,6 +128,8 @@ return {
                     -- capabilities = {},
                     on_attach = function(client, bufnr)
                         navbuddy.attach(client, bufnr)
+                        client.server_capabilities.document_formatting = false
+                        client.server_capabilities.document_range_formatting = false
                     end,
                     settings = {
                         Lua = {

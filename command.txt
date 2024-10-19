@@ -1,0 +1,114 @@
+Normal Mode (g commands)
+gg - Go to the first line of the file.
+G - Go to the last line of the file.
+gd - Go to the local declaration of the identifier under the cursor.
+gD - Go to the global declaration of the identifier under the cursor.
+gi - Go to the last place where Insert mode was stopped.
+gf - Open the file under the cursor.
+gx - Open a file or URL under the cursor.
+g% - Go to matching bracket or parentheses.
+gU - Uppercase text from the cursor to a motion (e.g., gUw to uppercase the next word).
+gu - Lowercase text from the cursor to a motion.
+g? - Rot13 encode the text from the cursor to a motion.
+ga - Display the ASCII value of the character under the cursor.
+gq - Format text based on text width (gqap formats a paragraph).
+gw - Format text but preserve current cursor position.
+gJ - Join lines without adding a space between them.
+g~ - Invert case from the cursor to a motion (e.g., g~w toggles case of the next word).
+g* - Search for the word under the cursor, but without whole-word matching.
+g# - Search backward for the word under the cursor without whole-word matching.
+
+Visual Mode (g commands)
+gU - Uppercase the selected text.
+gu - Lowercase the selected text.
+g? - Rot13 encode the selected text.
+gq - Format the selected text.
+g~ - Toggle case of the selected text.
+gJ - Join selected lines without adding a space between them.
+
+Insert Mode (g commands)
+While Insert mode doesn't have direct g commands, you can use key sequences to switch modes and execute them. Example: <Esc>gi to return to where you last left Insert mode.
+Other useful g combinations
+g<C-g> - Display current cursor position, line count, and file percentage.
+gq{motion} - Format lines (like with = but respecting textwidth).
+gn - Select the next match of the current search.
+gN - Select the previous match of the current search.
+Do you want more in-depth descriptions or help with using some specific ones in your configuration?
+
+Visual Block Mode (g commands)
+gU - Uppercase the selected block of text.
+gu - Lowercase the selected block of text.
+g? - Apply ROT13 encoding to the selected block of text.
+g~ - Invert the case of the selected block of text (e.g., uppercase becomes lowercase, and vice versa).
+gq - Format the selected block of text.
+g@ - Execute a macro on the selected block of text.
+gJ - Join the selected block of lines without adding a space between them.
+While the g commands are limited in Visual Block mode compared to Normal and Visual modes, you can still perform powerful text manipulations by selecting blocks and then applying these commands. For instance:
+
+Select a rectangular block of text, then run gU to make all the text in that block uppercase.
+Select a block, then use gq to format it according to your textwidth settings.
+Let me know if you need more details about working with Visual Block mode!
+
+Here’s a breakdown of how this works in Visual Block mode:
+g<C-a> in Visual Block Mode:
+g<C-a> - Increment all numbers within the selected block by 1. If you have a column of numbers selected, each number will be increased.
+Additional related commands:
+g<C-x> - Decrement all the numbers in the selected block by 1.
+g<C-a>10 - Increment all the numbers in the selected block by 10. You can specify any number instead of 10 to increment by that amount.
+g<C-x>5 - Decrement all the numbers in the selected block by 5 (or any other number you specify).
+These commands allow you to quickly adjust numbers in bulk when working with tables, sequences, or repetitive numeric data.
+
+Let me know if you need more examples or specific use cases for this!
+Commands Similar to g<C-a> in Visual Block Mode
+
+1. g<C-x> - Decrement Numbers
+Decrements all numbers in the selected block by 1. As mentioned earlier, you can use this to decrease numbers in bulk.
+
+2. I and A for Block Insertions
+I - Insert text at the beginning of each selected line in the block.
+A - Append text to the end of each selected line in the block.
+Example: Select a vertical block of text, press I, type some text, and press <Esc>. The text will be added at the beginning of each line in the block.
+
+3. r - Replace Characters in a Block
+After selecting a block, press r followed by the character you want to replace the selected text with.
+Example: Select a block of characters, press r, and then X to replace every character in the block with X.
+
+4. ~ - Toggle Case
+Toggles the case of the selected characters. This works similarly to g~, but for block-selected text.
+Example: Select a block of text, press ~, and all letters in that block will toggle between uppercase and lowercase.
+
+5. = - Indent (Auto-format) Block
+Automatically formats the selected block of code according to your indentation settings. It can be very useful for fixing indentations in a rectangular block of code.
+Example: Select a block of code, press = to re-indent it.
+
+6. > and < - Indent/Un-indent Block
+> - Indents the selected block of text to the right.
+< - Un-indents (or shifts) the selected block of text to the left.
+You can use these commands to adjust indentation in a selected block of text. Just press < or > after selecting a block to shift it.
+
+7. d, c, y in Visual Block Mode
+d - Deletes the selected block of text.
+c - Changes the selected block of text. It removes the block and puts you in insert mode to replace the text.
+y - Yanks (copies) the selected block of text. You can then paste it using p in Normal mode.
+
+8. U for Undoing
+In Visual Block mode, after making changes (like increments or case toggles), you can use U to undo changes within the block.
+
+9. J - Join Lines
+J - Joins the selected block of lines together. This merges the lines into a single line.
+
+10. x and X for Cutting
+x - Deletes the selected characters in the block.
+X - Deletes the selected block of characters, but also copies them (similar to d).
+
+11. gv - Reselect Last Visual Block
+After leaving Visual Block mode, you can press gv to reselect the same block, allowing you to apply further modifications to it.
+Bonus: Ex Commands for Advanced Block Edits
+You can combine Visual Block mode with Ex commands (:) for even more advanced editing. For example:
+
+:s/^/prefix/ - After selecting a block, you can use this command to insert a prefix before the beginning of each line in the block.
+:norm Itext - After selecting a block, runs the Itext command (inserts text at the beginning) on each line in the block.
+These commands give you powerful capabilities for bulk editing, especially in structured text like tables, configuration files, and source code.
+
+Let me know if you want more details or specific examples for these!
+
