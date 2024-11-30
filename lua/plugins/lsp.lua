@@ -179,7 +179,7 @@ return {
             })
             require("mason-tool-installer").setup({
                 ensure_installed = ensure_installed,
-                auto_update = false,
+                auto_update = true,
                 run_on_start = true,
                 integrations = {
                     ["mason-lspconfig"] = true,
